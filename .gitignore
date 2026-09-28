@@ -1,0 +1,10 @@
+.ipynb_checkpoints/
+__pycache__/
+.venv/
+node_modules/
+
+# Grosse Rohdaten bleiben lokal, kleine aufbereitete Dateien kommen mit.
+data/raw/
+*.zip
+*.gpkg
+*.tif
