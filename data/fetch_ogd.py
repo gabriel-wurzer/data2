@@ -29,22 +29,25 @@ BBOXEN = [
 MAX = 2500
 OUT = Path(__file__).with_name("gebaeude_wien.csv")
 
-# Wand-U-Wert nach Bauperiode, gerundet nach österreichischer Gebäudetypologie (TABULA).
-U_NACH_JAHR = [(1919, 1.50), (1945, 1.40), (1960, 1.30), (1980, 1.20),
-               (1990, 0.80), (2000, 0.60), (2010, 0.40), (9999, 0.25)]
+# Angenommener Wand-U-Wert je Bauperiode des Layers. Das sind Lehrwerte in der
+# Größenordnung der österreichischen Gebäudetypologie, keine erhobenen Kennwerte: die
+# Kategorie "Nach 1976" umfasst alles vom Plattenbau bis zum Passivhaus, ein einzelner Wert
+# kann das nicht abbilden. Wer es genauer braucht, ersetzt die Tabelle durch gemessene Werte.
+U_JE_PERIODE = {
+    "Vor 1683": 1.50, "1683-1740": 1.50, "1741-1780": 1.50, "1781-1848": 1.50,
+    "1849-1859": 1.50, "1860-1883": 1.50, "1884-1918": 1.45, "1919-1945": 1.40,
+    "1946-1976": 1.30, "Nach 1976": 0.70,
+}
+
+# Meter pro Grad: Breitengrad bei 48 Grad Nord, Längengrad zusätzlich mit cos(lat) verkürzt.
+M_PRO_GRAD_LAT = 111200.0
+M_PRO_GRAD_LON = 111320.0
 
 
-def u_wert(startjahr):
-    for grenze, u in U_NACH_JAHR:
-        if startjahr < grenze:
-            return u
-    return U_NACH_JAHR[-1][1]
-
-
-def meter(ring, lat0):
-    """Grad in Meter, lokal um lat0 linearisiert. Genau genug für Flächen dieser Größe."""
-    mx = 111320 * math.cos(math.radians(lat0))
-    return [(x * mx, y * 110540) for x, y in ring]
+def meter(ring, lat0, lon0):
+    """Grad in Meter, lokal um den Schwerpunkt linearisiert und dorthin verschoben."""
+    mx = M_PRO_GRAD_LON * math.cos(math.radians(lat0))
+    return [((x - lon0) * mx, (y - lat0) * M_PRO_GRAD_LAT) for x, y in ring]
 
 
 def flaeche_umfang(ring):
@@ -58,10 +61,21 @@ def flaeche_umfang(ring):
     return abs(a) / 2, u
 
 
-def startjahr(text):
-    if not text:
-        return None
-    ziffern = "".join(c if c.isdigit() else " " for c in text).split()
+def polygon_masse(poly, lat0, lon0):
+    """Außenring minus Höfe. Der Hofumfang zählt mit, er ist Außenwand."""
+    flaeche, umfang = 0.0, 0.0
+    for i, ring in enumerate(poly):
+        if len(ring) < 4:
+            continue
+        a, u = flaeche_umfang(meter(ring, lat0, lon0))
+        flaeche += a if i == 0 else -a
+        umfang += u
+    return flaeche, umfang
+
+
+def startjahr(periode):
+    """Erste Jahreszahl der Periode, nur zum Sortieren und Einfärben."""
+    ziffern = "".join(c if c.isdigit() else " " for c in periode).split()
     return int(ziffern[0]) if ziffern else None
 
 
@@ -81,32 +95,43 @@ def main():
         features += teil
 
     zeilen = []
+    gesehen = set()
     for f in features:
         p = f["properties"]
         geom = f["geometry"]
         if not geom or geom["type"] not in ("Polygon", "MultiPolygon"):
             continue
-        ring = geom["coordinates"][0] if geom["type"] == "Polygon" else geom["coordinates"][0][0]
-        if len(ring) < 4:
+        if p["OBJECTID"] in gesehen:    # die Ausschnitte überlappen einander
             continue
-        lat0 = sum(pt[1] for pt in ring) / len(ring)
-        lon0 = sum(pt[0] for pt in ring) / len(ring)
-        a, u = flaeche_umfang(meter(ring, lat0))
+        teile = [geom["coordinates"]] if geom["type"] == "Polygon" else geom["coordinates"]
+        aussen = teile[0][0]
+        if len(aussen) < 4:
+            continue
+        lat0 = sum(pt[1] for pt in aussen) / len(aussen)
+        lon0 = sum(pt[0] for pt in aussen) / len(aussen)
+
+        a = u = 0.0
+        for poly in teile:              # jeder Teil des Bauwerks zählt mit
+            pa, pu = polygon_masse(poly, lat0, lon0)
+            a += pa
+            u += pu
         if a < 40:                      # Schuppen und Splitter raus
             continue
-        jahr = startjahr(p.get("OBJ_STR_TXT"))
-        if jahr is None:
+
+        periode = p.get("OBJ_STR_TXT")
+        if periode not in U_JE_PERIODE:
             continue
-        uw = u_wert(jahr)
+        uw = U_JE_PERIODE[periode]
         kompakt = u / math.sqrt(a)      # dimensionslos, Kreis liegt bei 3.5, Zeile weit darüber
         if kompakt > 12:                # zerfranste Splitterpolygone raus
             continue
         # Die Rechenvorschrift. Sie ist die Zielgröße des Kurses, keine Messung.
         hwb = 18 + 62 * uw + 9 * kompakt
+        gesehen.add(p["OBJECTID"])
         zeilen.append({
             "id": p["OBJECTID"],
-            "bauperiode": p.get("OBJ_STR_TXT"),
-            "startjahr": jahr,
+            "bauperiode": periode,
+            "startjahr": startjahr(periode),
             "bautyp": (p.get("BAUTYP_TXT") or "").split("-")[0],
             "flaeche_m2": round(a, 1),
             "umfang_m": round(u, 1),
