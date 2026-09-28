@@ -1,0 +1,257 @@
+{
+  "titel": "Begriffe der KI, abgefragt",
+  "karten": [
+    {
+      "id": "token",
+      "bild": "bilder/token.png",
+      "bildwunsch": "Ein Satz aus Bauplänen, zerschnitten in kleine Papierschnipsel, die auf einem Tisch in einer Reihe liegen, jeder Schnipsel mit einer Nummer versehen. Nüchterne Draufsicht, warmes Licht.",
+      "frage": "Was ist ein Token in einem Sprachmodell?",
+      "antworten": [
+        "Ein Stück Text, in das ein Satz vor der Verarbeitung zerlegt wird",
+        "Ein Passwort, mit dem sich das Modell anmeldet",
+        "Die kleinste Einheit, der das Modell eine Zahl zuordnet",
+        "Ein fertiger Satz aus den Trainingsdaten"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Text wird in Tokens zerlegt, oft Wortteile, und jedes Token bekommt eine Zahl. Mit einem Zugangstoken hat das nichts zu tun."
+    },
+    {
+      "id": "llm",
+      "bild": "bilder/llm.png",
+      "bildwunsch": "Eine riesige Bibliothek, deren Regale sich in der Ferne verlieren, davor eine kleine Tafel mit einem halbfertigen Satz. Ruhige Perspektive.",
+      "frage": "Was macht ein großes Sprachmodell im Kern?",
+      "antworten": [
+        "Es sagt das nächste Token voraus",
+        "Es sucht die Antwort in einer Datenbank",
+        "Es speichert alle Trainingstexte und gibt sie wieder aus",
+        "Es rechnet aus, welche Fortsetzung wahrscheinlich ist"
+      ],
+      "richtig": [0, 3],
+      "erklaerung": "Ein Sprachmodell schätzt, wie es weitergeht. Es hat keine Datenbank, in der es nachschlägt, und die Trainingstexte liegen nicht darin."
+    },
+    {
+      "id": "generative-ki",
+      "bild": "bilder/generative-ki.png",
+      "bildwunsch": "Ein Grundriss, der sich am rechten Rand in eine noch unfertige, neue Form fortsetzt, gezeichnet mit Bleistift auf Transparentpapier.",
+      "frage": "Was unterscheidet generative Modelle von den Modellen aus Einheit 1 bis 3?",
+      "antworten": [
+        "Sie erzeugen neue Beispiele, statt nur eine Zahl vorherzusagen",
+        "Sie brauchen keine Trainingsdaten",
+        "Sie können aus einer gelernten Verteilung ziehen",
+        "Sie sind immer größer als eine Milliarde Parameter"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Generative Modelle lernen, wie die Daten verteilt sind, und ziehen daraus neue Beispiele. Trainingsdaten brauchen sie sehr wohl, und die Größe sagt nichts darüber."
+    },
+    {
+      "id": "autoencoder",
+      "bild": "bilder/autoencoder.png",
+      "bildwunsch": "Eine Sanduhr aus Glas, oben ein detaillierter Grundriss, in der Engstelle acht leuchtende Punkte, unten derselbe Grundriss etwas weicher.",
+      "frage": "Wozu dient der Flaschenhals in einem Autoencoder?",
+      "antworten": [
+        "Er zwingt das Modell, das Wesentliche in wenige Zahlen zu packen",
+        "Er beschleunigt das Training",
+        "Er verhindert, dass das Modell die Eingabe einfach durchreicht",
+        "Er sorgt dafür, dass die Ausgabe exakt der Eingabe gleicht"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Ohne Engstelle könnte das Modell die Eingabe kopieren und hätte nichts gelernt. Exakt gleich wird die Ausgabe gerade nicht."
+    },
+    {
+      "id": "latent",
+      "bild": "bilder/latent.png",
+      "bildwunsch": "Eine Landkarte, auf der statt Städten kleine Grundrisse liegen, ähnliche Formen nahe beieinander, mit einem eingezeichneten Weg zwischen zwei davon.",
+      "frage": "Was ist ein Latent Space?",
+      "antworten": [
+        "Der Raum der wenigen Zahlen, in die ein Modell seine Eingaben verdichtet",
+        "Ein Speicherbereich auf der Grafikkarte",
+        "Ein Raum, in dem Nachbarschaft Ähnlichkeit bedeutet, wenn das Training gelungen ist",
+        "Die Menge aller Trainingsbeispiele"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Nachbarschaft bedeutet dort oft Ähnlichkeit, aber garantiert ist das nicht: das muss man nachsehen."
+    },
+    {
+      "id": "embedding",
+      "bild": "bilder/embedding.png",
+      "bildwunsch": "Wörter als kleine Kugeln in einem dunklen Raum schwebend, verwandte Wörter nahe beieinander, mit dünnen Linien verbunden.",
+      "frage": "Was ist ein Embedding?",
+      "antworten": [
+        "Die Darstellung eines Dings als Punkt in einem Zahlenraum",
+        "Ein eingebettetes Bild in einer Webseite",
+        "Eine Liste von Zahlen, in der Nähe etwas bedeutet",
+        "Ein Verfahren zur Datenkompression von Dateien"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Wort, Bild oder Grundriss wird zum Punkt in einem Raum, in dem Abstand für Unähnlichkeit steht."
+    },
+    {
+      "id": "lora",
+      "bild": "bilder/lora.png",
+      "bildwunsch": "Ein großer, schwerer Setzkasten aus Metall, an dessen Seite eine kleine, leichte Zusatzschiene angeschraubt ist. Werkstattlicht.",
+      "frage": "Was macht LoRA beim Feinabstimmen eines Modells?",
+      "antworten": [
+        "Es trainiert nur wenige zusätzliche Gewichte statt aller",
+        "Es verkleinert das Modell dauerhaft",
+        "Es lässt das ursprüngliche Modell unverändert",
+        "Es ersetzt die Trainingsdaten durch synthetische"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Das Grundmodell bleibt, wie es ist. Daneben werden kleine Zusatzmatrizen gelernt, die man an- und abstecken kann."
+    },
+    {
+      "id": "diffusion",
+      "bild": "bilder/diffusion.png",
+      "bildwunsch": "Vier Bilder nebeneinander: reines Bildrauschen, das über drei Schritte zu einem klaren Gebäudegrundriss wird.",
+      "frage": "Wie erzeugt ein Diffusionsmodell ein Bild?",
+      "antworten": [
+        "Es entfernt schrittweise Rauschen aus einem zufälligen Startbild",
+        "Es setzt das Bild aus Trainingsbildern zusammen",
+        "Es hat gelernt, wie man Rauschen erkennt und wegrechnet",
+        "Es zeichnet das Bild Pixel für Pixel von links oben nach rechts unten"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Der Startpunkt ist Rauschen, und das Modell nimmt in vielen kleinen Schritten Rauschen heraus, bis ein Bild dasteht."
+    },
+    {
+      "id": "ueberanpassung",
+      "bild": "bilder/ueberanpassung.png",
+      "bildwunsch": "Zwei Kurven in einem Diagramm auf kariertem Papier: eine fällt weiter, die andere dreht nach oben, an der Stelle ein roter Kreis.",
+      "frage": "Woran erkennt man Überanpassung?",
+      "antworten": [
+        "Der Trainingsfehler fällt weiter, der Validierungsfehler steigt wieder",
+        "Der Trainingsfehler steigt",
+        "Das Modell trifft die Trainingsdaten fast perfekt und neue Daten schlecht",
+        "Das Training bricht mit einem Fehler ab"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Das Modell merkt sich die Trainingsbeispiele samt ihrem Zufall. Auf neuen Daten hilft ihm das nicht."
+    },
+    {
+      "id": "test",
+      "bild": "bilder/test.png",
+      "bildwunsch": "Drei verschlossene Kisten, die dritte mit Siegel, daneben ein Schlüssel, der noch an der Wand hängt.",
+      "frage": "Wozu ist der Testteil der Daten da?",
+      "antworten": [
+        "Für eine Schätzung, wie gut das Modell bei neuen Daten derselben Art ist",
+        "Zum Auswählen der besten Einstellungen",
+        "Man sieht ihn erst an, wenn alles entschieden ist",
+        "Er ersetzt die Validierungsdaten"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Zum Auswählen ist der Validierungsteil da. Wer nach dem Testblick noch nachbessert, hat keinen Testteil mehr."
+    },
+    {
+      "id": "lernrate",
+      "bild": "bilder/lernrate.png",
+      "bildwunsch": "Ein Wanderer an einem steilen Hang, einmal mit winzigen Schritten, einmal mit einem viel zu großen Sprung über das Tal hinaus.",
+      "frage": "Was passiert bei zu großer Lernrate?",
+      "antworten": [
+        "Der Fehler kann steigen statt fallen",
+        "Das Modell lernt schneller, aber genauer",
+        "Die Schritte springen über das Tal hinaus",
+        "Das Training wird abgebrochen"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Zu große Schritte springen über das Minimum. Die Verlustkurve geht dann nach oben statt nach unten."
+    },
+    {
+      "id": "normierung",
+      "bild": "bilder/normierung.png",
+      "bildwunsch": "Zwei Messlatten unterschiedlicher Länge, daneben dieselben zwei auf gleiche Länge gebracht, technische Zeichnung.",
+      "frage": "Warum normiert man Eingangsgrößen?",
+      "antworten": [
+        "Weil Größen mit sehr verschiedenen Zahlenbereichen den Abstieg zäh machen",
+        "Weil das Modell sonst gar nicht rechnen kann",
+        "Damit alle Eingänge vergleichbar ins Gewicht fallen",
+        "Weil man dadurch mehr Daten bekommt"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Rechnen kann das Modell auch ohne. Es dauert nur wesentlich länger, und die Gewichte sind schwer zu vergleichen."
+    },
+    {
+      "id": "relu",
+      "bild": "bilder/relu.png",
+      "bildwunsch": "Eine geknickte Linie auf Millimeterpapier, links flach auf null, rechts ansteigend, mit Bleistift nachgezogen.",
+      "frage": "Wozu braucht ein Netz eine Aktivierungsfunktion wie ReLU?",
+      "antworten": [
+        "Ohne sie ergeben gestapelte Schichten wieder nur eine lineare Abbildung",
+        "Sie beschleunigt die Grafikkarte",
+        "Sie bringt den Knick, aus dem sich Kurven zusammensetzen lassen",
+        "Sie sorgt dafür, dass die Ausgabe zwischen null und eins liegt"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Zwei lineare Schichten hintereinander sind wieder eine. Erst der Knick macht aus dem Netz mehr als eine Gerade."
+    },
+    {
+      "id": "surrogat",
+      "bild": "bilder/surrogat.png",
+      "bildwunsch": "Eine schwere Rechenmaschine neben einem kleinen Handgerät, beide zeigen dieselbe Zahl an.",
+      "frage": "Was ist ein Surrogatmodell?",
+      "antworten": [
+        "Ein schnelles Modell, das eine langsame Simulation nachahmt",
+        "Ein Modell, das die Simulation überflüssig macht",
+        "Ein Modell, das nur innerhalb des geprüften Bereichs gilt",
+        "Eine Simulation mit gröberem Gitter"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Es antwortet in Millisekunden statt in Minuten, aber nur dort, wo es geprüft wurde. Die Simulation bleibt der Maßstab."
+    },
+    {
+      "id": "halluzination",
+      "bild": "bilder/halluzination.png",
+      "bildwunsch": "Ein selbstbewusst gezeichneter Bauplan, bei genauem Hinsehen führt eine Treppe gegen die Decke.",
+      "frage": "Was heißt es, wenn ein Sprachmodell halluziniert?",
+      "antworten": [
+        "Es gibt eine erfundene Angabe im Ton einer sicheren Auskunft",
+        "Es stürzt ab",
+        "Es erzeugt etwas, das plausibel klingt, aber nicht stimmt",
+        "Es wiederholt seine Trainingsdaten wörtlich"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Das Modell schätzt die wahrscheinliche Fortsetzung. Wahrscheinlich und wahr ist nicht dasselbe."
+    },
+    {
+      "id": "finetuning",
+      "bild": "bilder/finetuning.png",
+      "bildwunsch": "Ein fertiges Werkzeug, das an einer Schleifmaschine für eine bestimmte Aufgabe nachgeschärft wird.",
+      "frage": "Was ist Finetuning?",
+      "antworten": [
+        "Weitertrainieren eines fertigen Modells auf eigene Daten",
+        "Das Training eines Modells von Grund auf",
+        "Anpassung an eine enge Aufgabe mit vergleichsweise wenig Daten",
+        "Das Verkleinern eines Modells für das Handy"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Von Grund auf trainieren heißt Pretraining und braucht ein Vielfaches an Daten und Rechenzeit."
+    },
+    {
+      "id": "parameter",
+      "bild": "bilder/parameter.png",
+      "bildwunsch": "Eine Wand voller kleiner Drehregler, einige hervorgehoben, in der Art eines alten Mischpults.",
+      "frage": "Was sind die Parameter eines Modells?",
+      "antworten": [
+        "Die Zahlen, die beim Training verändert werden",
+        "Die Einstellungen, die der Mensch vorgibt",
+        "Gewichte und Verschiebungen im Netz",
+        "Die Eingangsgrößen eines Hauses"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Was der Mensch vorgibt, etwa Lernrate oder Netzgröße, heißt Hyperparameter und wird nicht mitgelernt."
+    },
+    {
+      "id": "prompt",
+      "bild": "bilder/prompt.png",
+      "bildwunsch": "Ein handgeschriebener Zettel, der in einen Briefschlitz einer großen Maschine gesteckt wird.",
+      "frage": "Was ist ein Prompt?",
+      "antworten": [
+        "Die Eingabe, aus der das Modell seine Fortsetzung berechnet",
+        "Ein Befehl, den das Modell ausführen muss",
+        "Text, der den Anfang bildet, den das Modell weiterschreibt",
+        "Eine Einstellung im Modell selbst"
+      ],
+      "richtig": [0, 2],
+      "erklaerung": "Ein Prompt ist kein Befehl, sondern ein Anfang. Das Modell schreibt ihn weiter, so gut es kann."
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0d12">
+<title>KI-Begriffe, abgefragt</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #0b0d12; --karte: #141821; --rand: #222a38; --text: #e8ecf4;
+    --matt: #8b95a8; --gut: #3fa46a; --schlecht: #c0453c; --akzent: #d8a24a;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text); font-size: 17px; line-height: 1.5;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+  }
+  main { max-width: 620px; margin: 0 auto; padding-bottom: 32px; }
+  h1 { font-size: 22px; letter-spacing: .02em; margin: 20px 0 4px; }
+  p.matt { color: var(--matt); margin: 4px 0 20px; }
+  button {
+    font: inherit; color: inherit; background: var(--karte); border: 1px solid var(--rand);
+    border-radius: 12px; padding: 14px 16px; width: 100%; text-align: left; margin-bottom: 10px;
+    cursor: pointer;
+  }
+  button:active { transform: scale(.995); }
+  button.gewaehlt { border-color: var(--akzent); background: #1b2030; }
+  button.richtig { border-color: var(--gut); background: #14261d; }
+  button.falsch { border-color: var(--schlecht); background: #2a1715; }
+  .haupt { background: var(--akzent); color: #1a1205; border: none; text-align: center; font-weight: 600; }
+  .bild {
+    width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px;
+    background: #10141d; border: 1px solid var(--rand); display: block;
+  }
+  .platzhalter { display: grid; place-items: center; color: var(--matt); font-size: 14px; text-align: center; padding: 16px; }
+  .frage { font-size: 19px; font-weight: 600; margin: 16px 0 14px; }
+  .leiste { display: flex; gap: 10px; align-items: center; color: var(--matt); font-size: 14px; margin-bottom: 8px; }
+  .fortschritt { flex: 1; height: 6px; background: var(--rand); border-radius: 3px; overflow: hidden; }
+  .fortschritt > i { display: block; height: 100%; background: var(--akzent); width: 0; }
+  .erklaerung { border-left: 3px solid var(--akzent); padding: 10px 14px; background: #131722; border-radius: 0 10px 10px 0; margin: 14px 0; }
+  .grube { width: 100%; height: auto; margin: 8px 0 16px; border-radius: 14px; border: 1px solid var(--rand); }
+  .zeile { display: flex; gap: 10px; }
+  .zeile > button { margin-bottom: 0; }
+  .klein { font-size: 14px; color: var(--matt); }
+</style>
+</head>
+<body>
+<main id="app"></main>
+
+<script>
+const S = { karten: [], reihe: [], i: 0, gewaehlt: new Set(), gezeigt: false, modus: "alle", richtig: 0, falsch: 0 };
+const app = document.getElementById("app");
+const speicher = {
+  lies() { try { return JSON.parse(localStorage.getItem("kartei") || "{}"); } catch { return {}; } },
+  schreib(k) { try { localStorage.setItem("kartei", JSON.stringify(k)); } catch {} },
+};
+
+async function start() {
+  const daten = await fetch("fragen.json").then(r => r.json());
+  S.karten = daten.karten;
+  menue();
+}
+
+function menue() {
+  const kartei = speicher.lies();
+  const offen = S.karten.filter(k => (kartei[k.id] || 0) < 2).length;
+  app.innerHTML = `
+    ${grubeSvg()}
+    <h1>KI-Begriffe, abgefragt</h1>
+    <p class="matt">Kein Kolinahr, aber es fragt so lange, bis es sitzt. Achtzehn Begriffe aus
+    259.075, jeweils mit Bild, Frage und mehreren richtigen Antworten.</p>
+    <button class="haupt" id="b-alle">Alles durch, ${S.karten.length} Karten</button>
+    <button id="b-kartei">Nur was noch nicht sitzt, ${offen} Karten</button>
+    <button id="b-reset" class="klein">Kartei zurücksetzen</button>`;
+  document.getElementById("b-alle").onclick = () => los("alle");
+  document.getElementById("b-kartei").onclick = () => los("kartei");
+  document.getElementById("b-reset").onclick = () => { speicher.schreib({}); menue(); };
+}
+
+function los(modus) {
+  const kartei = speicher.lies();
+  S.modus = modus;
+  S.reihe = (modus === "kartei" ? S.karten.filter(k => (kartei[k.id] || 0) < 2) : [...S.karten])
+              .sort(() => Math.random() - .5);
+  if (!S.reihe.length) return menue();
+  S.i = 0; S.richtig = 0; S.falsch = 0;
+  karte();
+}
+
+function karte() {
+  const k = S.reihe[S.i];
+  S.gewaehlt = new Set();
+  S.gezeigt = false;
+  const anteil = Math.round((S.i / S.reihe.length) * 100);
+  app.innerHTML = `
+    <div class="leiste"><span>${S.i + 1} / ${S.reihe.length}</span>
+      <span class="fortschritt"><i style="width:${anteil}%"></i></span>
+      <span>${S.richtig} richtig</span></div>
+    <img class="bild" src="${k.bild}" alt="" onerror="this.replaceWith(platzhalter())">
+    <div class="frage">${k.frage}</div>
+    <div id="antworten"></div>
+    <button class="haupt" id="b-pruef">Antwort prüfen</button>
+    <div id="nach"></div>`;
+  const kasten = document.getElementById("antworten");
+  k.antworten.forEach((text, n) => {
+    const b = document.createElement("button");
+    b.textContent = text;
+    b.onclick = () => {
+      if (S.gezeigt) return;
+      S.gewaehlt.has(n) ? S.gewaehlt.delete(n) : S.gewaehlt.add(n);
+      b.classList.toggle("gewaehlt");
+    };
+    kasten.appendChild(b);
+  });
+  document.getElementById("b-pruef").onclick = pruefen;
+}
+
+function platzhalter() {
+  const d = document.createElement("div");
+  d.className = "bild platzhalter";
+  d.textContent = "Bild wird noch erzeugt";
+  return d;
+}
+
+function pruefen() {
+  if (S.gezeigt) return;
+  S.gezeigt = true;
+  const k = S.reihe[S.i];
+  const soll = new Set(k.richtig);
+  const knoepfe = [...document.querySelectorAll("#antworten button")];
+  knoepfe.forEach((b, n) => {
+    b.classList.remove("gewaehlt");
+    if (soll.has(n)) b.classList.add("richtig");
+    else if (S.gewaehlt.has(n)) b.classList.add("falsch");
+  });
+  const stimmt = soll.size === S.gewaehlt.size && [...soll].every(n => S.gewaehlt.has(n));
+  stimmt ? S.richtig++ : S.falsch++;
+
+  const kartei = speicher.lies();
+  kartei[k.id] = stimmt ? Math.min((kartei[k.id] || 0) + 1, 3) : 0;
+  speicher.schreib(kartei);
+
+  document.getElementById("nach").innerHTML = `
+    <div class="erklaerung"><b>${stimmt ? "Sitzt." : "Noch nicht."}</b> ${k.erklaerung}</div>
+    <button class="haupt" id="b-weiter">${S.i + 1 < S.reihe.length ? "Weiter" : "Auswertung"}</button>`;
+  document.getElementById("b-weiter").onclick = () => {
+    S.i++;
+    S.i < S.reihe.length ? karte() : ende();
+  };
+  document.getElementById("b-pruef").remove();
+}
+
+function ende() {
+  const kartei = speicher.lies();
+  const sitzen = S.karten.filter(k => (kartei[k.id] || 0) >= 2).length;
+  app.innerHTML = `
+    <h1>${S.richtig} von ${S.reihe.length}</h1>
+    <p class="matt">Insgesamt sitzen ${sitzen} von ${S.karten.length} Begriffen. Eine Karte gilt
+    als gesessen, wenn sie zweimal hintereinander richtig war, und fällt bei einem Fehler
+    wieder zurück.</p>
+    <button class="haupt" id="b-nochmal">Die falschen nochmal</button>
+    <button id="b-menue">Zurück</button>`;
+  document.getElementById("b-nochmal").onclick = () => los("kartei");
+  document.getElementById("b-menue").onclick = menue;
+}
+
+function grubeSvg() {
+  return `<svg class="grube" viewBox="0 0 620 300" role="img" aria-label="Prüfungsgrube">
+    <defs>
+      <radialGradient id="himmel" cx="50%" cy="10%" r="90%">
+        <stop offset="0%" stop-color="#2a1c10"/><stop offset="100%" stop-color="#0b0d12"/>
+      </radialGradient>
+    </defs>
+    <rect width="620" height="300" fill="url(#himmel)"/>
+    <ellipse cx="310" cy="250" rx="300" ry="60" fill="#12151d"/>
+    <ellipse cx="310" cy="250" rx="200" ry="40" fill="#0e1119"/>
+    ${[...Array(9)].map((_, n) => {
+      const x = 60 + n * 62.5, h = 70 + (n % 3) * 26;
+      return `<rect x="${x}" y="${230 - h}" width="22" height="${h}" rx="3" fill="#1b2130"/>
+              <circle cx="${x + 11}" cy="${228 - h}" r="5" fill="#d8a24a" opacity=".55"/>`;
+    }).join("")}
+    <g transform="translate(310 232)">
+      <ellipse cx="0" cy="6" rx="26" ry="7" fill="#0a0c11"/>
+      <path d="M0 -52 q13 10 13 30 L13 4 q-13 6 -26 0 L-13 -22 q0 -20 13 -30z" fill="#e8ecf4" opacity=".92"/>
+      <circle cx="0" cy="-60" r="9" fill="#e8ecf4" opacity=".92"/>
+      <rect x="14" y="-26" width="12" height="18" rx="3" fill="#d8a24a"/>
+    </g>
+  </svg>`;
+}
+
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+start();
+</script>
+</body>
+</html>
