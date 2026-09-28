@@ -28,6 +28,9 @@ BBOXEN = [
 ]
 MAX = 2500
 OUT = Path(__file__).with_name("gebaeude_wien.csv")
+# Die Grundrisse selbst, für alles ab Einheit 4: rastern, Autoencoder, Formkarte. Ohne die
+# Geometrie bleiben nur die abgeleiteten Zahlen übrig, und aus denen wird kein Grundriss mehr.
+OUT_GEO = Path(__file__).with_name("gebaeude_wien.geojson")
 
 # Angenommener Wand-U-Wert je Bauperiode des Layers. Das sind Lehrwerte in der
 # Größenordnung der österreichischen Gebäudetypologie, keine erhobenen Kennwerte: die
@@ -95,6 +98,7 @@ def main():
         features += teil
 
     zeilen = []
+    geometrien = []
     gesehen = set()
     for f in features:
         p = f["properties"]
@@ -128,6 +132,11 @@ def main():
         # Die Rechenvorschrift. Sie ist die Zielgröße des Kurses, keine Messung.
         hwb = 18 + 62 * uw + 9 * kompakt
         gesehen.add(p["OBJECTID"])
+        geometrien.append({
+            "type": "Feature",
+            "geometry": geom,
+            "properties": {"id": p["OBJECTID"], "bauperiode": periode},
+        })
         zeilen.append({
             "id": p["OBJECTID"],
             "bauperiode": periode,
@@ -146,7 +155,9 @@ def main():
         w = csv.DictWriter(fh, fieldnames=list(zeilen[0].keys()))
         w.writeheader()
         w.writerows(zeilen)
-    print(f"{len(zeilen)} Gebäude in {OUT.name}")
+    OUT_GEO.write_text(json.dumps({"type": "FeatureCollection", "features": geometrien}),
+                       encoding="utf-8")
+    print(f"{len(zeilen)} Gebäude in {OUT.name} und {OUT_GEO.name}")
 
 
 if __name__ == "__main__":
