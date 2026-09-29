@@ -1,311 +1,396 @@
 {
-  "titel": "Begriffe der KI, abgefragt",
+  "titel": "AI terms, asked",
   "karten": [
     {
-      "id": "token",
-      "bild": "bilder/token.png",
-      "bildwunsch": "Vordergrund scharf: eine lange Reihe schmaler Papierstreifen auf schwarzem Stein, jeder Streifen trägt ein Fragment einer Bauzeichnung, sie liegen wie Dominosteine in die Tiefe. Mittelgrund unscharf: die Schere, die sie geschnitten hat. Hintergrund: dunkle Werkstatt, ein Lichtstreifen aus einer Türspalte.",
-      "frage": "Was ist ein Token in einem Sprachmodell?",
+      "id": "neuron",
+      "bild": "bilder/neuron.png",
+      "bildwunsch": "Sharp foreground: a single brass balance scale on a workbench, one pan holding a small weight, a pointer showing the result. Background: dark workshop.",
+      "frage": "What is a neuron, in the sense used in this course?",
       "antworten": [
-        "Ein Stück Text, in das ein Satz vor der Verarbeitung zerlegt wird",
-        "Ein Passwort, mit dem sich das Modell anmeldet",
-        "Die kleinste Einheit, der das Modell eine Zahl zuordnet",
-        "Ein fertiger Satz aus den Trainingsdaten"
+        "Inputs, one weight each, a bias, one output",
+        "A simulation of a biological nerve cell",
+        "The smallest building block of every network in this course",
+        "A layer of a network"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Text wird in Tokens zerlegt, oft Wortteile, und jedes Token bekommt eine Zahl. Mit einem Zugangstoken hat das nichts zu tun."
+      "erklaerung": "It is a weighted sum plus a bias. The biological name is historical; nothing in it models a real nerve cell."
+    },
+    {
+      "id": "gradient",
+      "bild": "bilder/gradient.png",
+      "bildwunsch": "Sharp foreground: a boot on a steep scree slope, stones sliding. Background: valley in fog, low sun from the side.",
+      "frage": "What does the gradient tell you?",
+      "antworten": [
+        "Which way is downhill from where you stand",
+        "Where the minimum is",
+        "The slope of the loss at the current parameters",
+        "How many steps are left"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "It is local information only. Where the minimum lies, and how far, the gradient does not say."
+    },
+    {
+      "id": "loss",
+      "bild": "bilder/loss.png",
+      "bildwunsch": "Sharp foreground: graph paper with a curve falling and flattening out, drawn in pencil. Background: dark desk, lamp from the left.",
+      "frage": "What is a loss function?",
+      "antworten": [
+        "One number saying how wrong the model is on the data",
+        "The time a training run takes",
+        "The quantity the training tries to make small",
+        "The difference between two models"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Squared error is one choice among several. Which one you pick decides what kind of mistakes the model avoids."
+    },
+    {
+      "id": "kleinstquadrate",
+      "bild": "bilder/kleinstquadrate.png",
+      "bildwunsch": "Sharp foreground: an old printed table of numbers with a straight edge laid across it. Background: library in darkness, one lamp.",
+      "frage": "What is the method of least squares?",
+      "antworten": [
+        "A closed-form solution for the best straight line",
+        "An iterative procedure like gradient descent",
+        "Published by Legendre and Gauss around 1805",
+        "Only applicable to two variables"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "For a linear model you can compute the optimum directly. Gradient descent is needed once the model is no longer linear."
+    },
+    {
+      "id": "residuum",
+      "bild": "bilder/residuum.png",
+      "bildwunsch": "Sharp foreground: a city map with a few houses marked in red and blue. Background: drawing table in the dark.",
+      "frage": "What is a residual?",
+      "antworten": [
+        "Measured minus predicted, for one example",
+        "The error of the whole model",
+        "What is left over for the model to explain",
+        "The noise in the data"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Residuals are read one by one. A pattern in them says the model is missing something, not that the data is bad."
+    },
+    {
+      "id": "token",
+      "bild": "bilder/token.png",
+      "bildwunsch": "Vordergrund scharf: eine lange Reihe schmaler Papierstreifen auf schwarzem Stein, jeder Streifen trägt ein Fragment einer Bauzeichnung, sie liegen wie Dominosteine in die Tiefe. Mittelgrund unscharf: die Schere, die sie geschnitten hat. Hintergrund: dunkle Werkstatt, ein Lichtstreifen aus einer Türspalte.",
+      "frage": "What is a token in a language model?",
+      "antworten": [
+        "A piece of text a sentence is cut into before processing",
+        "A password the model signs in with",
+        "The smallest unit the model assigns a number to",
+        "A finished sentence from the training data"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Text is cut into tokens, often word fragments, and each token gets a number. Nothing to do with an access token."
     },
     {
       "id": "llm",
       "bild": "bilder/llm.png",
       "bildwunsch": "Vordergrund scharf: eine einzelne aufgeschlagene Seite auf einem Lesepult, die letzte Zeile bricht mitten im Wort ab. Mittelgrund: die Kante des Pults. Hintergrund: eine Bibliothek, deren Regale sich in völliger Dunkelheit verlieren, nur zwei ferne Leuchten.",
-      "frage": "Was macht ein großes Sprachmodell im Kern?",
+      "frage": "What does a large language model do at its core?",
       "antworten": [
-        "Es sagt das nächste Token voraus",
-        "Es sucht die Antwort in einer Datenbank",
-        "Es speichert alle Trainingstexte und gibt sie wieder aus",
-        "Es rechnet aus, welche Fortsetzung wahrscheinlich ist"
+        "It predicts the next token",
+        "It looks the answer up in a database",
+        "It stores all training texts and returns them",
+        "It computes which continuation is likely"
       ],
       "richtig": [
         0,
         3
       ],
-      "erklaerung": "Ein Sprachmodell schätzt, wie es weitergeht. Es hat keine Datenbank, in der es nachschlägt, und die Trainingstexte liegen nicht darin."
+      "erklaerung": "A language model estimates how things continue. It has no database to consult, and the training texts are not inside it."
     },
     {
       "id": "generative-ki",
       "bild": "bilder/generative-ki.png",
       "bildwunsch": "Vordergrund scharf: der rechte Rand eines Grundrisses auf Transparentpapier, wo gezeichnete Linien in noch unfertige, tastende Linien übergehen. Mittelgrund: die Hand einer Lampe, die von links streift. Hintergrund: Zeichentisch im Halbdunkel.",
-      "frage": "Was unterscheidet generative Modelle von den Modellen aus Einheit 1 bis 3?",
+      "frage": "What separates generative models from the ones in sessions 1 to 3?",
       "antworten": [
-        "Sie erzeugen neue Beispiele, statt nur eine Zahl vorherzusagen",
-        "Sie brauchen keine Trainingsdaten",
-        "Sie können aus einer gelernten Verteilung ziehen",
-        "Sie sind immer größer als eine Milliarde Parameter"
+        "They produce new examples instead of predicting one number",
+        "They need no training data",
+        "They can draw from a learned distribution",
+        "They always have more than a billion parameters"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Generative Modelle lernen, wie die Daten verteilt sind, und ziehen daraus neue Beispiele. Trainingsdaten brauchen sie sehr wohl, und die Größe sagt nichts darüber."
+      "erklaerung": "Generative models learn how the data is distributed and draw new examples from it. They very much need training data, and size says nothing."
     },
     {
       "id": "autoencoder",
       "bild": "bilder/autoencoder.png",
       "bildwunsch": "Vordergrund scharf: die Engstelle einer großen Sanduhr aus Glas, in der wenige leuchtende Körner hängen. Mittelgrund: oben im Glas ein dicht gezeichneter Grundriss aus Sand. Hintergrund: derselbe Grundriss unten, gröber, im Schatten versinkend.",
-      "frage": "Wozu dient der Flaschenhals in einem Autoencoder?",
+      "frage": "What is the bottleneck in an autoencoder for?",
       "antworten": [
-        "Er zwingt das Modell, das Wesentliche in wenige Zahlen zu packen",
-        "Er beschleunigt das Training",
-        "Er verhindert, dass das Modell die Eingabe einfach durchreicht",
-        "Er sorgt dafür, dass die Ausgabe exakt der Eingabe gleicht"
+        "It forces the model to pack the essentials into few numbers",
+        "It speeds up training",
+        "It stops the model from simply passing the input through",
+        "It makes the output exactly equal to the input"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Ohne Engstelle könnte das Modell die Eingabe kopieren und hätte nichts gelernt. Exakt gleich wird die Ausgabe gerade nicht."
+      "erklaerung": "Without the narrow part the model could copy its input and would have learned nothing. Exactly equal is precisely what the output does not get."
     },
     {
       "id": "latent",
       "bild": "bilder/latent.png",
       "bildwunsch": "Vordergrund scharf: zwei kleine Modellgrundrisse aus Karton nebeneinander auf dunklem Tisch, zwischen ihnen eine gespannte Schnur. Mittelgrund: weitere Kartonformen, nach Ähnlichkeit gruppiert, weicher werdend. Hintergrund: völlige Dunkelheit mit einem Lichtkegel von oben.",
-      "frage": "Was ist ein Latent Space?",
+      "frage": "What is a latent space?",
       "antworten": [
-        "Der Raum der wenigen Zahlen, in die ein Modell seine Eingaben verdichtet",
-        "Ein Speicherbereich auf der Grafikkarte",
-        "Ein Raum, in dem Nachbarschaft Ähnlichkeit bedeutet, wenn das Training gelungen ist",
-        "Die Menge aller Trainingsbeispiele"
+        "The space of the few numbers a model compresses its inputs into",
+        "A memory area on the graphics card",
+        "A space where neighbourhood means similarity, if training went well",
+        "The set of all training examples"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Nachbarschaft bedeutet dort oft Ähnlichkeit, aber garantiert ist das nicht: das muss man nachsehen."
+      "erklaerung": "Neighbourhood often means similarity there, but it is not guaranteed: you have to check."
     },
     {
       "id": "embedding",
       "bild": "bilder/embedding.png",
       "bildwunsch": "Vordergrund scharf: drei kleine Glaskugeln dicht beieinander, in jeder ein winziges Objekt. Mittelgrund: weitere Kugeln in lockeren Gruppen, unscharf. Hintergrund: dunkler Raum, ein einzelner Lichtstrahl von der Seite.",
-      "frage": "Was ist ein Embedding?",
+      "frage": "What is an embedding?",
       "antworten": [
-        "Die Darstellung eines Dings als Punkt in einem Zahlenraum",
-        "Ein eingebettetes Bild in einer Webseite",
-        "Eine Liste von Zahlen, in der Nähe etwas bedeutet",
-        "Ein Verfahren zur Datenkompression von Dateien"
+        "A thing represented as a point in a space of numbers",
+        "An image embedded in a web page",
+        "A list of numbers in which closeness means something",
+        "A method for compressing files"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Wort, Bild oder Grundriss wird zum Punkt in einem Raum, in dem Abstand für Unähnlichkeit steht."
+      "erklaerung": "Word, image or floor plan becomes a point in a space where distance stands for dissimilarity."
     },
     {
       "id": "lora",
       "bild": "bilder/lora.png",
       "bildwunsch": "Vordergrund scharf: eine kleine, fein gearbeitete Zusatzschiene, die an eine schwere Maschine geschraubt wird, zwei blanke Schrauben glänzen. Mittelgrund unscharf: der massige Korpus der Maschine. Hintergrund: Werkstatt, Gegenlicht, Staub in der Luft.",
-      "frage": "Was macht LoRA beim Feinabstimmen eines Modells?",
+      "frage": "What does LoRA do when fine-tuning a model?",
       "antworten": [
-        "Es trainiert nur wenige zusätzliche Gewichte statt aller",
-        "Es verkleinert das Modell dauerhaft",
-        "Es lässt das ursprüngliche Modell unverändert",
-        "Es ersetzt die Trainingsdaten durch synthetische"
+        "It trains a few additional weights instead of all of them",
+        "It shrinks the model permanently",
+        "It leaves the original model untouched",
+        "It replaces the training data with synthetic data"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Das Grundmodell bleibt, wie es ist. Daneben werden kleine Zusatzmatrizen gelernt, die man an- und abstecken kann."
+      "erklaerung": "The base model stays as it is. Small extra matrices are learned next to it and can be plugged in and out."
     },
     {
       "id": "diffusion",
       "bild": "bilder/diffusion.png",
       "bildwunsch": "Vordergrund scharf: eine Glasplatte, auf der grobes Korn zu einer klaren Zeichnung zusammenläuft, links noch Rauschen, rechts schon Linien. Mittelgrund: die Kante der Platte, Reflexe. Hintergrund: dunkler Raum, eine harte Lichtquelle von schräg hinten.",
-      "frage": "Wie erzeugt ein Diffusionsmodell ein Bild?",
+      "frage": "How does a diffusion model produce an image?",
       "antworten": [
-        "Es entfernt schrittweise Rauschen aus einem zufälligen Startbild",
-        "Es setzt das Bild aus Trainingsbildern zusammen",
-        "Es hat gelernt, wie man Rauschen erkennt und wegrechnet",
-        "Es zeichnet das Bild Pixel für Pixel von links oben nach rechts unten"
+        "It removes noise step by step from a random starting image",
+        "It assembles the image from training images",
+        "It has learned to recognise noise and compute it away",
+        "It draws pixel by pixel from top left to bottom right"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Der Startpunkt ist Rauschen, und das Modell nimmt in vielen kleinen Schritten Rauschen heraus, bis ein Bild dasteht."
+      "erklaerung": "The starting point is noise, and the model takes noise out in many small steps until an image stands there."
     },
     {
       "id": "ueberanpassung",
       "bild": "bilder/ueberanpassung.png",
       "bildwunsch": "Vordergrund scharf: kariertes Papier, auf dem zwei Bleistiftkurven auseinanderlaufen, eine fällt, die andere biegt nach oben, an der Trennstelle ein roter Kreis. Mittelgrund: Bleistift und Radiergummi. Hintergrund: Schreibtisch im Dunkeln, Lampenlicht von links.",
-      "frage": "Woran erkennt man Überanpassung?",
+      "frage": "How do you recognise overfitting?",
       "antworten": [
-        "Der Trainingsfehler fällt weiter, der Validierungsfehler steigt wieder",
-        "Der Trainingsfehler steigt",
-        "Das Modell trifft die Trainingsdaten fast perfekt und neue Daten schlecht",
-        "Das Training bricht mit einem Fehler ab"
+        "Training error keeps falling while validation error rises again",
+        "The training error rises",
+        "The model nearly nails the training data and does badly on new data",
+        "Training stops with an error message"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Das Modell merkt sich die Trainingsbeispiele samt ihrem Zufall. Auf neuen Daten hilft ihm das nicht."
+      "erklaerung": "The model memorises the training examples including their accidents. On new data that does not help."
     },
     {
       "id": "test",
       "bild": "bilder/test.png",
       "bildwunsch": "Vordergrund scharf: eine verschlossene Holzkiste mit Siegel, daneben ein Schlüssel, der noch am Haken hängt. Mittelgrund: zwei offene, leere Kisten. Hintergrund: Lagerraum, ein einzelnes Fenster im Gegenlicht.",
-      "frage": "Wozu ist der Testteil der Daten da?",
+      "frage": "What is the test split for?",
       "antworten": [
-        "Für eine Schätzung, wie gut das Modell bei neuen Daten derselben Art ist",
-        "Zum Auswählen der besten Einstellungen",
-        "Man sieht ihn erst an, wenn alles entschieden ist",
-        "Er ersetzt die Validierungsdaten"
+        "An estimate of how the model does on new data of the same kind",
+        "Choosing the best settings",
+        "You look at it once everything is decided",
+        "It replaces the validation split"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Zum Auswählen ist der Validierungsteil da. Wer nach dem Testblick noch nachbessert, hat keinen Testteil mehr."
+      "erklaerung": "Choosing is what the validation split is for. Tune after looking at the test split and you no longer have one."
     },
     {
       "id": "lernrate",
       "bild": "bilder/lernrate.png",
       "bildwunsch": "Vordergrund scharf: ein Stiefel, der am Rand eines steilen Geröllhangs aufsetzt, Steine lösen sich. Mittelgrund: der Hang fällt steil ab. Hintergrund: Tal im Nebel, tiefstehende Sonne von der Seite.",
-      "frage": "Was passiert bei zu großer Lernrate?",
+      "frage": "What happens if the learning rate is too large?",
       "antworten": [
-        "Der Fehler kann steigen statt fallen",
-        "Das Modell lernt schneller, aber genauer",
-        "Die Schritte springen über das Tal hinaus",
-        "Das Training wird abgebrochen"
+        "The error can rise instead of fall",
+        "The model learns faster and more accurately",
+        "The steps jump across the valley",
+        "Training is aborted"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Zu große Schritte springen über das Minimum. Die Verlustkurve geht dann nach oben statt nach unten."
+      "erklaerung": "Steps that are too long jump over the minimum. The loss curve then goes up instead of down."
     },
     {
       "id": "normierung",
       "bild": "bilder/normierung.png",
       "bildwunsch": "Vordergrund scharf: zwei Messlatten aus Messing, dicht nebeneinander, verschieden lang, eine ragt aus dem Bild. Mittelgrund: ein Schraubstock. Hintergrund: dunkle Werkstattwand, harter Lichtstreifen.",
-      "frage": "Warum normiert man Eingangsgrößen?",
+      "frage": "Why normalise the inputs?",
       "antworten": [
-        "Weil Größen mit sehr verschiedenen Zahlenbereichen den Abstieg zäh machen",
-        "Weil das Modell sonst gar nicht rechnen kann",
-        "Damit alle Eingänge vergleichbar ins Gewicht fallen",
-        "Weil man dadurch mehr Daten bekommt"
+        "Because inputs on very different scales make the descent crawl",
+        "Because the model cannot compute otherwise",
+        "So that every input carries comparable weight",
+        "Because it gives you more data"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Rechnen kann das Modell auch ohne. Es dauert nur wesentlich länger, und die Gewichte sind schwer zu vergleichen."
+      "erklaerung": "The model computes fine without it. It just takes far longer, and the weights are hard to compare."
     },
     {
       "id": "relu",
       "bild": "bilder/relu.png",
       "bildwunsch": "Vordergrund scharf: eine mit Bleistift gezogene, deutlich geknickte Linie auf Millimeterpapier, links flach, rechts steil. Mittelgrund: Lineal und Bleistiftspitze. Hintergrund: Zeichentisch, Lampe von rechts, tiefer Schatten links.",
-      "frage": "Wozu braucht ein Netz eine Aktivierungsfunktion wie ReLU?",
+      "frage": "Why does a network need an activation function such as ReLU?",
       "antworten": [
-        "Ohne sie ergeben gestapelte Schichten wieder nur eine lineare Abbildung",
-        "Sie beschleunigt die Grafikkarte",
-        "Sie bringt den Knick, aus dem sich Kurven zusammensetzen lassen",
-        "Sie sorgt dafür, dass die Ausgabe zwischen null und eins liegt"
+        "Without it, stacked layers collapse into one linear map",
+        "It speeds up the graphics card",
+        "It provides the kink that curves are assembled from",
+        "It keeps the output between zero and one"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Zwei lineare Schichten hintereinander sind wieder eine. Erst der Knick macht aus dem Netz mehr als eine Gerade."
+      "erklaerung": "Two linear layers in a row are one linear layer. The kink is what makes a network more than a straight line."
     },
     {
       "id": "surrogat",
       "bild": "bilder/surrogat.png",
       "bildwunsch": "Vordergrund scharf: ein kleines Handgerät mit Zeiger. Mittelgrund unscharf: eine schwere mechanische Rechenmaschine, beide zeigen denselben Zeigerstand. Hintergrund: Maschinensaal im Dunkeln, ein Lichtkegel.",
-      "frage": "Was ist ein Surrogatmodell?",
+      "frage": "What is a surrogate model?",
       "antworten": [
-        "Ein schnelles Modell, das eine langsame Simulation nachahmt",
-        "Ein Modell, das die Simulation überflüssig macht",
-        "Ein Modell, das nur innerhalb des geprüften Bereichs gilt",
-        "Eine Simulation mit gröberem Gitter"
+        "A fast model imitating a slow simulation",
+        "A model that makes simulation unnecessary",
+        "A model valid only inside the range it was checked on",
+        "A simulation on a coarser grid"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Es antwortet in Millisekunden statt in Minuten, aber nur dort, wo es geprüft wurde. Die Simulation bleibt der Maßstab."
+      "erklaerung": "It answers in milliseconds instead of minutes, but only where it was checked. The simulation stays the reference."
     },
     {
       "id": "halluzination",
       "bild": "bilder/halluzination.png",
       "bildwunsch": "Vordergrund scharf: ein sauber gezeichneter Bauplan, auf dem eine Treppe gegen die Decke führt und im Nichts endet. Mittelgrund: Zirkel und Rotstift. Hintergrund: dunkles Büro, Lampe von hinten links, langer Schatten.",
-      "frage": "Was heißt es, wenn ein Sprachmodell halluziniert?",
+      "frage": "What does it mean when a language model hallucinates?",
       "antworten": [
-        "Es gibt eine erfundene Angabe im Ton einer sicheren Auskunft",
-        "Es stürzt ab",
-        "Es erzeugt etwas, das plausibel klingt, aber nicht stimmt",
-        "Es wiederholt seine Trainingsdaten wörtlich"
+        "It states something invented in the tone of a reliable answer",
+        "It crashes",
+        "It produces something plausible that is not true",
+        "It repeats its training data verbatim"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Das Modell schätzt die wahrscheinliche Fortsetzung. Wahrscheinlich und wahr ist nicht dasselbe."
+      "erklaerung": "The model estimates the likely continuation. Likely and true are not the same thing."
     },
     {
       "id": "finetuning",
       "bild": "bilder/finetuning.png",
       "bildwunsch": "Vordergrund scharf: eine Werkzeugschneide, die an einem Schleifstein Funken schlägt. Mittelgrund: die Hand der Maschine, unscharf. Hintergrund: dunkle Werkstatt, Funken als einzige helle Punkte.",
-      "frage": "Was ist Finetuning?",
+      "frage": "What is fine-tuning?",
       "antworten": [
-        "Weitertrainieren eines fertigen Modells auf eigene Daten",
-        "Das Training eines Modells von Grund auf",
-        "Anpassung an eine enge Aufgabe mit vergleichsweise wenig Daten",
-        "Das Verkleinern eines Modells für das Handy"
+        "Training a finished model further on your own data",
+        "Training a model from scratch",
+        "Adapting to a narrow task with comparatively little data",
+        "Shrinking a model for a phone"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Von Grund auf trainieren heißt Pretraining und braucht ein Vielfaches an Daten und Rechenzeit."
+      "erklaerung": "Training from scratch is called pretraining and needs orders of magnitude more data and compute."
     },
     {
       "id": "parameter",
       "bild": "bilder/parameter.png",
       "bildwunsch": "Vordergrund scharf: drei Drehregler eines alten Mischpults, einer davon hervorgehoben. Mittelgrund: die Reglerreihe läuft in die Unschärfe. Hintergrund: Regieraum im Dunkeln, eine warme Kontrolllampe.",
-      "frage": "Was sind die Parameter eines Modells?",
+      "frage": "What are the parameters of a model?",
       "antworten": [
-        "Die Zahlen, die beim Training verändert werden",
-        "Die Einstellungen, die der Mensch vorgibt",
-        "Gewichte und Verschiebungen im Netz",
-        "Die Eingangsgrößen eines Hauses"
+        "The numbers changed during training",
+        "The settings a human specifies",
+        "Weights and biases in the network",
+        "The input values of a building"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Was der Mensch vorgibt, etwa Lernrate oder Netzgröße, heißt Hyperparameter und wird nicht mitgelernt."
+      "erklaerung": "What the human sets, such as learning rate or network size, is called a hyperparameter and is not learned."
     },
     {
       "id": "prompt",
       "bild": "bilder/prompt.png",
       "bildwunsch": "Vordergrund scharf: ein handbeschriebener Zettel, halb in einen Messingschlitz geschoben. Mittelgrund: die Front eines großen Apparats aus Metall. Hintergrund: dunkler Maschinenraum, Licht nur aus dem Schlitz selbst.",
-      "frage": "Was ist ein Prompt?",
+      "frage": "What is a prompt?",
       "antworten": [
-        "Die Eingabe, aus der das Modell seine Fortsetzung berechnet",
-        "Ein Befehl, den das Modell ausführen muss",
-        "Text, der den Anfang bildet, den das Modell weiterschreibt",
-        "Eine Einstellung im Modell selbst"
+        "The input from which the model computes its continuation",
+        "A command the model must carry out",
+        "Text that forms the beginning the model writes on from",
+        "A setting inside the model"
       ],
       "richtig": [
         0,
         2
       ],
-      "erklaerung": "Ein Prompt ist kein Befehl, sondern ein Anfang. Das Modell schreibt ihn weiter, so gut es kann."
+      "erklaerung": "A prompt is not an order, it is a beginning. The model continues it as well as it can."
     }
   ]
 }

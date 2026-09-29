@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b0d12">
-<title>KI-Begriffe, abgefragt</title>
+<title>AI terms, asked</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <style>
@@ -69,12 +69,12 @@ function menue() {
   const offen = S.karten.filter(k => (kartei[k.id] || 0) < 2).length;
   app.innerHTML = `
     ${grubeSvg()}
-    <h1>KI-Begriffe, abgefragt</h1>
-    <p class="matt">Kein Kolinahr, aber es fragt so lange, bis es sitzt. Achtzehn Begriffe aus
-    259.075, jeweils mit Bild, Frage und mehreren richtigen Antworten.</p>
-    <button class="haupt" id="b-alle">Alles durch, ${S.karten.length} Karten</button>
-    <button id="b-kartei">Nur was noch nicht sitzt, ${offen} Karten</button>
-    <button id="b-reset" class="klein">Kartei zurücksetzen</button>`;
+    <h1>AI terms, asked</h1>
+    <p class="matt">Not quite Kolinahr, but it keeps asking until the terms stick. Every card has a
+    picture, a question and more than one correct answer.</p>
+    <button class="haupt" id="b-alle">All cards, ${S.karten.length}</button>
+    <button id="b-kartei">Only what is not sitting yet, ${offen}</button>
+    <button id="b-reset" class="klein">Reset progress</button>`;
   document.getElementById("b-alle").onclick = () => los("alle");
   document.getElementById("b-kartei").onclick = () => los("kartei");
   document.getElementById("b-reset").onclick = () => { speicher.schreib({}); menue(); };
@@ -98,11 +98,11 @@ function karte() {
   app.innerHTML = `
     <div class="leiste"><span>${S.i + 1} / ${S.reihe.length}</span>
       <span class="fortschritt"><i style="width:${anteil}%"></i></span>
-      <span>${S.richtig} richtig</span></div>
+      <span>${S.richtig} right</span></div>
     <img class="bild" src="${k.bild}" alt="" onerror="this.replaceWith(platzhalter())">
     <div class="frage">${k.frage}</div>
     <div id="antworten"></div>
-    <button class="haupt" id="b-pruef">Antwort prüfen</button>
+    <button class="haupt" id="b-pruef">Check answer</button>
     <div id="nach"></div>`;
   const kasten = document.getElementById("antworten");
   k.antworten.forEach((text, n) => {
@@ -121,7 +121,7 @@ function karte() {
 function platzhalter() {
   const d = document.createElement("div");
   d.className = "bild platzhalter";
-  d.textContent = "Bild wird noch erzeugt";
+  d.textContent = "image still rendering";
   return d;
 }
 
@@ -144,8 +144,8 @@ function pruefen() {
   speicher.schreib(kartei);
 
   document.getElementById("nach").innerHTML = `
-    <div class="erklaerung"><b>${stimmt ? "Sitzt." : "Noch nicht."}</b> ${k.erklaerung}</div>
-    <button class="haupt" id="b-weiter">${S.i + 1 < S.reihe.length ? "Weiter" : "Auswertung"}</button>`;
+    <div class="erklaerung"><b>${stimmt ? "That sits." : "Not yet."}</b> ${k.erklaerung}</div>
+    <button class="haupt" id="b-weiter">${S.i + 1 < S.reihe.length ? "Next" : "Result"}</button>`;
   document.getElementById("b-weiter").onclick = () => {
     S.i++;
     S.i < S.reihe.length ? karte() : ende();
@@ -157,18 +157,17 @@ function ende() {
   const kartei = speicher.lies();
   const sitzen = S.karten.filter(k => (kartei[k.id] || 0) >= 2).length;
   app.innerHTML = `
-    <h1>${S.richtig} von ${S.reihe.length}</h1>
-    <p class="matt">Insgesamt sitzen ${sitzen} von ${S.karten.length} Begriffen. Eine Karte gilt
-    als gesessen, wenn sie zweimal hintereinander richtig war, und fällt bei einem Fehler
-    wieder zurück.</p>
-    <button class="haupt" id="b-nochmal">Die falschen nochmal</button>
-    <button id="b-menue">Zurück</button>`;
+    <h1>${S.richtig} of ${S.reihe.length}</h1>
+    <p class="matt">${sitzen} of ${S.karten.length} terms are sitting. A card counts as sitting after
+    two correct answers in a row, and falls back to zero on a mistake.</p>
+    <button class="haupt" id="b-nochmal">The wrong ones again</button>
+    <button id="b-menue">Back</button>`;
   document.getElementById("b-nochmal").onclick = () => los("kartei");
   document.getElementById("b-menue").onclick = menue;
 }
 
 function grubeSvg() {
-  return `<svg class="grube" viewBox="0 0 620 300" role="img" aria-label="Prüfungsgrube">
+  return `<svg class="grube" viewBox="0 0 620 300" role="img" aria-label="the pit">
     <defs>
       <radialGradient id="himmel" cx="50%" cy="10%" r="90%">
         <stop offset="0%" stop-color="#2a1c10"/><stop offset="100%" stop-color="#0b0d12"/>

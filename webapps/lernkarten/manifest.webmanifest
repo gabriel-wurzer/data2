@@ -1,7 +1,7 @@
 {
-  "name": "KI-Begriffe, abgefragt",
-  "short_name": "KI-Begriffe",
-  "description": "Kartenabfrage zu den Begriffen aus 259.075",
+  "name": "AI terms, asked",
+  "short_name": "AI terms",
+  "description": "Flashcards for the terms in 259.075",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
