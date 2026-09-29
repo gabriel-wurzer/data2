@@ -1,6 +1,6 @@
 // Alles offline verfügbar halten, damit die App in der U-Bahn läuft.
-const CACHE = "lernkarten-v1";
-const DATEIEN = ["./", "./index.html", "./fragen.json", "./manifest.webmanifest",
+const CACHE = "lernkarten-v2";
+const DATEIEN = ["./", "./index.html", "./fragen.json", "./manifest.json",
                  "./icon.svg", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", e => {
