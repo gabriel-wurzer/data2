@@ -1,7 +1,7 @@
 # Einheit 2: Vom Neuron zum Netz
 
 259.075 VU Data-integrated Algorithmic Design Processes II
-Freitag, 23.10.2026, 09:00 bis 11:00, EDV-Labor PC5, rund 20 Studierende
+Zweite von sieben Einheiten, Freitag 09:00 bis 11:00, EDV-Labor PC5, rund 20 Studierende
 
 ## Wo wir herkommen
 

@@ -1,7 +1,7 @@
 # Einheit 4: Wie ein Grundriss zur Zahl wird
 
 259.075 VU Data-integrated Algorithmic Design Processes II
-Freitag, 27.11.2026, 09:00 bis 11:00, EDV-Labor PC5, rund 20 Studierende
+Vierte von sieben Einheiten, Freitag 09:00 bis 11:00, EDV-Labor PC5, rund 20 Studierende
 
 ## Wo wir herkommen
 

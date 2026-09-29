@@ -1,6 +1,6 @@
 # Session 1, Planung für mich
 
-Freitag, 9.10.2026, 09:00 bis 11:00, EDV-Labor PC5, rund 20 Studierende.
+Erste von sieben Einheiten, Freitag 09:00 bis 11:00, EDV-Labor PC5, rund 20 Studierende.
 Der Lehrtext steht im Notebook `notebooks/01_neuron.ipynb`, hier steht nur, was ich brauche.
 
 ## Zeitraster
@@ -18,7 +18,7 @@ Der Lehrtext steht im Notebook `notebooks/01_neuron.ipynb`, hier steht nur, was 
 
 ## Vorher zu erledigen
 
-- Vorabcheck `00_check.ipynb` bis Mittwoch 7.10., 12:00. Fehlermeldungen vor der Stunde lösen.
+- Vorabcheck `00_check.ipynb` bis Mittwoch vor der Einheit, 12:00. Fehlermeldungen vor der Stunde lösen.
 - Generalprobe im Labor: zwanzig gleichzeitige Kernel, Plotly-Animationen, Kernel-Neustart mit
   Durchlauf aller Zellen.
 - Lösungsnotebook nach der Abgabefrist freischalten.
