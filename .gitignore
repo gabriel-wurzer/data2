@@ -8,3 +8,7 @@ data/raw/
 *.zip
 *.gpkg
 *.tif
+
+# Kurztests mit Loesungen, Bewertungshinweise, Bewertungslauf: nie ins oeffentliche Repo.
+sessions/privat/
+notebooks/abgabe_*.pt
