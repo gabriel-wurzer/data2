@@ -34,4 +34,4 @@ Es gilt `kursregeln.md`: Auflösung nach zehn Minuten, ohne Abzug, und ohne Abga
 ## Zahlen, die in der Stunde fallen
 
 Optimum auf dem aktuellen Datensatz: w = 8,5, b = 109, Fehler 50,3. Divergenz ab Lernrate
-etwa 0,033, deshalb 0,04 für das Gegenbeispiel. Datensatz: 1073 Gebäude.
+0,0299 (nachgerechnet), deshalb 0,04 für das Gegenbeispiel. Datensatz: 1073 Gebäude.
