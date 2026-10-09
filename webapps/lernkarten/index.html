@@ -51,8 +51,20 @@
 <main id="app"></main>
 
 <script>
-const S = { karten: [], reihe: [], i: 0, gewaehlt: new Set(), gezeigt: false, modus: "alle", richtig: 0, falsch: 0 };
+const S = { karten: [], reihe: [], i: 0, gewaehlt: new Set(), gezeigt: false, modus: "alle",
+            richtig: 0, falsch: 0, reihenfolge: [] };
 const app = document.getElementById("app");
+
+// Without this the correct answers would always sit in the same slots, and after three
+// cards everybody just taps the first and the third.
+function mische(feld) {
+  const a = [...feld];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 const speicher = {
   lies() { try { return JSON.parse(localStorage.getItem("kartei") || "{}"); } catch { return {}; } },
   schreib(k) { try { localStorage.setItem("kartei", JSON.stringify(k)); } catch {} },
@@ -105,12 +117,14 @@ function karte() {
     <button class="haupt" id="b-pruef">Check answer</button>
     <div id="nach"></div>`;
   const kasten = document.getElementById("antworten");
-  k.antworten.forEach((text, n) => {
+  S.reihenfolge = mische([...k.antworten.keys()]);
+  S.reihenfolge.forEach(urspruenglich => {
     const b = document.createElement("button");
-    b.textContent = text;
+    b.textContent = k.antworten[urspruenglich];
     b.onclick = () => {
       if (S.gezeigt) return;
-      S.gewaehlt.has(n) ? S.gewaehlt.delete(n) : S.gewaehlt.add(n);
+      S.gewaehlt.has(urspruenglich) ? S.gewaehlt.delete(urspruenglich)
+                                    : S.gewaehlt.add(urspruenglich);
       b.classList.toggle("gewaehlt");
     };
     kasten.appendChild(b);
@@ -131,7 +145,8 @@ function pruefen() {
   const k = S.reihe[S.i];
   const soll = new Set(k.richtig);
   const knoepfe = [...document.querySelectorAll("#antworten button")];
-  knoepfe.forEach((b, n) => {
+  knoepfe.forEach((b, pos) => {
+    const n = S.reihenfolge[pos];
     b.classList.remove("gewaehlt");
     if (soll.has(n)) b.classList.add("richtig");
     else if (S.gewaehlt.has(n)) b.classList.add("falsch");

@@ -4,7 +4,7 @@
     {
       "id": "neuron",
       "bild": "bilder/neuron.png",
-      "bildwunsch": "Sharp foreground: a single brass balance scale on a workbench, one pan holding a small weight, a pointer showing the result. Background: dark workshop.",
+      "bildwunsch": "a brass balance scale on a workbench, one pan holding a small weight, a pointer",
       "frage": "What is a neuron, in the sense used in this course?",
       "antworten": [
         "Inputs, one weight each, a bias, one output",
@@ -21,10 +21,10 @@
     {
       "id": "gradient",
       "bild": "bilder/gradient.png",
-      "bildwunsch": "Sharp foreground: a boot on a steep scree slope, stones sliding. Background: valley in fog, low sun from the side.",
+      "bildwunsch": "a brass inclinometer on a sloping stone slab, its needle showing the tilt, fog behind",
       "frage": "What does the gradient tell you?",
       "antworten": [
-        "Which way is downhill from where you stand",
+        "Which way the loss rises fastest, so you step against it",
         "Where the minimum is",
         "The slope of the loss at the current parameters",
         "How many steps are left"
@@ -33,12 +33,12 @@
         0,
         2
       ],
-      "erklaerung": "It is local information only. Where the minimum lies, and how far, the gradient does not say."
+      "erklaerung": "It is local information, and it points uphill. Where the minimum lies, and how far, the gradient does not say."
     },
     {
       "id": "loss",
       "bild": "bilder/loss.png",
-      "bildwunsch": "Sharp foreground: graph paper with a curve falling and flattening out, drawn in pencil. Background: dark desk, lamp from the left.",
+      "bildwunsch": "graph paper with a pencil curve falling and flattening out, on a dark desk",
       "frage": "What is a loss function?",
       "antworten": [
         "One number saying how wrong the model is on the data",
@@ -55,7 +55,7 @@
     {
       "id": "kleinstquadrate",
       "bild": "bilder/kleinstquadrate.png",
-      "bildwunsch": "Sharp foreground: an old printed table of numbers with a straight edge laid across it. Background: library in darkness, one lamp.",
+      "bildwunsch": "an old printed table of numbers with a brass straight edge laid across it",
       "frage": "What is the method of least squares?",
       "antworten": [
         "A closed-form solution for the best straight line",
@@ -72,7 +72,7 @@
     {
       "id": "residuum",
       "bild": "bilder/residuum.png",
-      "bildwunsch": "Sharp foreground: a city map with a few houses marked in red and blue. Background: drawing table in the dark.",
+      "bildwunsch": "a city map with a few houses marked in red and blue on a drawing table",
       "frage": "What is a residual?",
       "antworten": [
         "Measured minus predicted, for one example",
@@ -89,7 +89,7 @@
     {
       "id": "token",
       "bild": "bilder/token.png",
-      "bildwunsch": "Vordergrund scharf: eine lange Reihe schmaler Papierstreifen auf schwarzem Stein, jeder Streifen trägt ein Fragment einer Bauzeichnung, sie liegen wie Dominosteine in die Tiefe. Mittelgrund unscharf: die Schere, die sie geschnitten hat. Hintergrund: dunkle Werkstatt, ein Lichtstreifen aus einer Türspalte.",
+      "bildwunsch": "narrow paper strips on black stone, each with a fragment of a building drawing, scissors",
       "frage": "What is a token in a language model?",
       "antworten": [
         "A piece of text a sentence is cut into before processing",
@@ -106,7 +106,7 @@
     {
       "id": "llm",
       "bild": "bilder/llm.png",
-      "bildwunsch": "Vordergrund scharf: eine einzelne aufgeschlagene Seite auf einem Lesepult, die letzte Zeile bricht mitten im Wort ab. Mittelgrund: die Kante des Pults. Hintergrund: eine Bibliothek, deren Regale sich in völliger Dunkelheit verlieren, nur zwei ferne Leuchten.",
+      "bildwunsch": "an open page on a lectern, the last line breaking off mid-word, dark library behind",
       "frage": "What does a large language model do at its core?",
       "antworten": [
         "It predicts the next token",
@@ -123,7 +123,7 @@
     {
       "id": "generative-ki",
       "bild": "bilder/generative-ki.png",
-      "bildwunsch": "Vordergrund scharf: der rechte Rand eines Grundrisses auf Transparentpapier, wo gezeichnete Linien in noch unfertige, tastende Linien übergehen. Mittelgrund: die Hand einer Lampe, die von links streift. Hintergrund: Zeichentisch im Halbdunkel.",
+      "bildwunsch": "a floor plan on tracing paper, drawn lines turning into unfinished searching lines",
       "frage": "What separates generative models from the ones in sessions 1 to 3?",
       "antworten": [
         "They produce new examples instead of predicting one number",
@@ -140,7 +140,7 @@
     {
       "id": "autoencoder",
       "bild": "bilder/autoencoder.png",
-      "bildwunsch": "Vordergrund scharf: die Engstelle einer großen Sanduhr aus Glas, in der wenige leuchtende Körner hängen. Mittelgrund: oben im Glas ein dicht gezeichneter Grundriss aus Sand. Hintergrund: derselbe Grundriss unten, gröber, im Schatten versinkend.",
+      "bildwunsch": "the narrow waist of a glass hourglass, few glowing grains hanging in it",
       "frage": "What is the bottleneck in an autoencoder for?",
       "antworten": [
         "It forces the model to pack the essentials into few numbers",
@@ -157,7 +157,7 @@
     {
       "id": "latent",
       "bild": "bilder/latent.png",
-      "bildwunsch": "Vordergrund scharf: zwei kleine Modellgrundrisse aus Karton nebeneinander auf dunklem Tisch, zwischen ihnen eine gespannte Schnur. Mittelgrund: weitere Kartonformen, nach Ähnlichkeit gruppiert, weicher werdend. Hintergrund: völlige Dunkelheit mit einem Lichtkegel von oben.",
+      "bildwunsch": "two small cardboard floor plan models on a dark table, a taut string between them",
       "frage": "What is a latent space?",
       "antworten": [
         "The space of the few numbers a model compresses its inputs into",
@@ -174,7 +174,7 @@
     {
       "id": "embedding",
       "bild": "bilder/embedding.png",
-      "bildwunsch": "Vordergrund scharf: drei kleine Glaskugeln dicht beieinander, in jeder ein winziges Objekt. Mittelgrund: weitere Kugeln in lockeren Gruppen, unscharf. Hintergrund: dunkler Raum, ein einzelner Lichtstrahl von der Seite.",
+      "bildwunsch": "three small glass spheres close together, a tiny object inside each",
       "frage": "What is an embedding?",
       "antworten": [
         "A thing represented as a point in a space of numbers",
@@ -191,7 +191,7 @@
     {
       "id": "lora",
       "bild": "bilder/lora.png",
-      "bildwunsch": "Vordergrund scharf: eine kleine, fein gearbeitete Zusatzschiene, die an eine schwere Maschine geschraubt wird, zwei blanke Schrauben glänzen. Mittelgrund unscharf: der massige Korpus der Maschine. Hintergrund: Werkstatt, Gegenlicht, Staub in der Luft.",
+      "bildwunsch": "a small finely made auxiliary rail bolted to a heavy machine, two bright screws",
       "frage": "What does LoRA do when fine-tuning a model?",
       "antworten": [
         "It trains a few additional weights instead of all of them",
@@ -208,7 +208,7 @@
     {
       "id": "diffusion",
       "bild": "bilder/diffusion.png",
-      "bildwunsch": "Vordergrund scharf: eine Glasplatte, auf der grobes Korn zu einer klaren Zeichnung zusammenläuft, links noch Rauschen, rechts schon Linien. Mittelgrund: die Kante der Platte, Reflexe. Hintergrund: dunkler Raum, eine harte Lichtquelle von schräg hinten.",
+      "bildwunsch": "a glass plate where coarse grain resolves into a drawing, noise left, lines right",
       "frage": "How does a diffusion model produce an image?",
       "antworten": [
         "It removes noise step by step from a random starting image",
@@ -225,7 +225,7 @@
     {
       "id": "ueberanpassung",
       "bild": "bilder/ueberanpassung.png",
-      "bildwunsch": "Vordergrund scharf: kariertes Papier, auf dem zwei Bleistiftkurven auseinanderlaufen, eine fällt, die andere biegt nach oben, an der Trennstelle ein roter Kreis. Mittelgrund: Bleistift und Radiergummi. Hintergrund: Schreibtisch im Dunkeln, Lampenlicht von links.",
+      "bildwunsch": "squared paper with two pencil curves diverging, a red circle where they part",
       "frage": "How do you recognise overfitting?",
       "antworten": [
         "Training error keeps falling while validation error rises again",
@@ -242,7 +242,7 @@
     {
       "id": "test",
       "bild": "bilder/test.png",
-      "bildwunsch": "Vordergrund scharf: eine verschlossene Holzkiste mit Siegel, daneben ein Schlüssel, der noch am Haken hängt. Mittelgrund: zwei offene, leere Kisten. Hintergrund: Lagerraum, ein einzelnes Fenster im Gegenlicht.",
+      "bildwunsch": "a sealed wooden crate beside a key still hanging on its hook, two open crates behind",
       "frage": "What is the test split for?",
       "antworten": [
         "An estimate of how the model does on new data of the same kind",
@@ -259,7 +259,7 @@
     {
       "id": "lernrate",
       "bild": "bilder/lernrate.png",
-      "bildwunsch": "Vordergrund scharf: ein Stiefel, der am Rand eines steilen Geröllhangs aufsetzt, Steine lösen sich. Mittelgrund: der Hang fällt steil ab. Hintergrund: Tal im Nebel, tiefstehende Sonne von der Seite.",
+      "bildwunsch": "a boot mid-stride over a gap in rock, the step far too long, stones falling",
       "frage": "What happens if the learning rate is too large?",
       "antworten": [
         "The error can rise instead of fall",
@@ -276,7 +276,7 @@
     {
       "id": "normierung",
       "bild": "bilder/normierung.png",
-      "bildwunsch": "Vordergrund scharf: zwei Messlatten aus Messing, dicht nebeneinander, verschieden lang, eine ragt aus dem Bild. Mittelgrund: ein Schraubstock. Hintergrund: dunkle Werkstattwand, harter Lichtstreifen.",
+      "bildwunsch": "two brass measuring rods side by side, different lengths, one running out of frame",
       "frage": "Why normalise the inputs?",
       "antworten": [
         "Because inputs on very different scales make the descent crawl",
@@ -293,7 +293,7 @@
     {
       "id": "relu",
       "bild": "bilder/relu.png",
-      "bildwunsch": "Vordergrund scharf: eine mit Bleistift gezogene, deutlich geknickte Linie auf Millimeterpapier, links flach, rechts steil. Mittelgrund: Lineal und Bleistiftspitze. Hintergrund: Zeichentisch, Lampe von rechts, tiefer Schatten links.",
+      "bildwunsch": "a pencil line with a sharp kink on graph paper, flat left, steep right, a ruler",
       "frage": "Why does a network need an activation function such as ReLU?",
       "antworten": [
         "Without it, stacked layers collapse into one linear map",
@@ -310,7 +310,7 @@
     {
       "id": "surrogat",
       "bild": "bilder/surrogat.png",
-      "bildwunsch": "Vordergrund scharf: ein kleines Handgerät mit Zeiger. Mittelgrund unscharf: eine schwere mechanische Rechenmaschine, beide zeigen denselben Zeigerstand. Hintergrund: Maschinensaal im Dunkeln, ein Lichtkegel.",
+      "bildwunsch": "a small handheld gauge before a heavy calculating machine, both needles at one reading",
       "frage": "What is a surrogate model?",
       "antworten": [
         "A fast model imitating a slow simulation",
@@ -327,7 +327,7 @@
     {
       "id": "halluzination",
       "bild": "bilder/halluzination.png",
-      "bildwunsch": "Vordergrund scharf: ein sauber gezeichneter Bauplan, auf dem eine Treppe gegen die Decke führt und im Nichts endet. Mittelgrund: Zirkel und Rotstift. Hintergrund: dunkles Büro, Lampe von hinten links, langer Schatten.",
+      "bildwunsch": "an architectural drawing where a staircase runs into the ceiling and ends in nothing",
       "frage": "What does it mean when a language model hallucinates?",
       "antworten": [
         "It states something invented in the tone of a reliable answer",
@@ -344,7 +344,7 @@
     {
       "id": "finetuning",
       "bild": "bilder/finetuning.png",
-      "bildwunsch": "Vordergrund scharf: eine Werkzeugschneide, die an einem Schleifstein Funken schlägt. Mittelgrund: die Hand der Maschine, unscharf. Hintergrund: dunkle Werkstatt, Funken als einzige helle Punkte.",
+      "bildwunsch": "a tool edge throwing sparks on a grinding wheel, sparks the only bright points",
       "frage": "What is fine-tuning?",
       "antworten": [
         "Training a finished model further on your own data",
@@ -361,7 +361,7 @@
     {
       "id": "parameter",
       "bild": "bilder/parameter.png",
-      "bildwunsch": "Vordergrund scharf: drei Drehregler eines alten Mischpults, einer davon hervorgehoben. Mittelgrund: die Reglerreihe läuft in die Unschärfe. Hintergrund: Regieraum im Dunkeln, eine warme Kontrolllampe.",
+      "bildwunsch": "three rotary knobs of an old mixing desk, one highlighted, the row running out of focus",
       "frage": "What are the parameters of a model?",
       "antworten": [
         "The numbers changed during training",
@@ -378,7 +378,7 @@
     {
       "id": "prompt",
       "bild": "bilder/prompt.png",
-      "bildwunsch": "Vordergrund scharf: ein handbeschriebener Zettel, halb in einen Messingschlitz geschoben. Mittelgrund: die Front eines großen Apparats aus Metall. Hintergrund: dunkler Maschinenraum, Licht nur aus dem Schlitz selbst.",
+      "bildwunsch": "a handwritten slip half pushed into a brass slot in a large metal apparatus",
       "frage": "What is a prompt?",
       "antworten": [
         "The input from which the model computes its continuation",
@@ -391,6 +391,567 @@
         2
       ],
       "erklaerung": "A prompt is not an order, it is a beginning. The model continues it as well as it can."
+    },
+    {
+      "id": "normierung-2",
+      "bild": "bilder/normierung-2.png",
+      "bildwunsch": "Sharp foreground: two brass measuring rods of different length standing side by side on a workbench",
+      "frage": "Why does rescaling the inputs matter?",
+      "antworten": [
+        "Because one learning rate has to serve inputs of very different spread",
+        "Because the model cannot compute with large numbers",
+        "Because the weights only become comparable afterwards",
+        "Because it removes outliers"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "It is not a condition for fitting a model, it is a condition for fitting it quickly and for reading the weights afterwards."
+    },
+    {
+      "id": "layer",
+      "bild": "bilder/layer.png",
+      "bildwunsch": "Sharp foreground: a row of identical brass gauges mounted on one rail, all reading the same dial",
+      "frage": "What is a layer?",
+      "antworten": [
+        "Several neurons computing side by side from the same inputs",
+        "Several neurons computing one after another",
+        "One row of a weight matrix per neuron",
+        "A step that always contains an activation function"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Side by side, not behind each other. The activation function sits between layers and is a separate choice."
+    },
+    {
+      "id": "aktivierung",
+      "bild": "bilder/aktivierung.png",
+      "bildwunsch": "Sharp foreground: a pencil line with a sharp kink drawn on graph paper, flat left, steep right",
+      "frage": "What is an activation function for?",
+      "antworten": [
+        "Without it, stacked layers collapse into one linear map",
+        "It normalises the output",
+        "It is what makes a network more than a straight line",
+        "It decides which neurons are switched off permanently"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Two linear layers in a row are one linear layer. The kink is the whole point."
+    },
+    {
+      "id": "gewichtsmatrix",
+      "bild": "bilder/gewichtsmatrix.png",
+      "bildwunsch": "Sharp foreground: a printed table of numbers in tight rows on a drafting table",
+      "frage": "What does the weight matrix of a layer contain?",
+      "antworten": [
+        "One row per neuron",
+        "One row per input",
+        "All the weights of the layer at once",
+        "The biases as well"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "One row per neuron, one column per input, and the bias is a separate vector."
+    },
+    {
+      "id": "vorwaerts",
+      "bild": "bilder/vorwaerts.png",
+      "bildwunsch": "Sharp foreground: a row of brass gears turning in one direction, the last one driving a pointer",
+      "frage": "What happens in a forward pass?",
+      "antworten": [
+        "The inputs are computed through to the output",
+        "The weights are updated",
+        "No parameter changes",
+        "The gradients are computed"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Forward computes, backward differentiates, the optimiser step changes the weights. Three different things."
+    },
+    {
+      "id": "optimierer",
+      "bild": "bilder/optimierer.png",
+      "bildwunsch": "Sharp foreground: a heavy brass lever being pushed, a scale showing how far it has moved",
+      "frage": "What does an optimiser do?",
+      "antworten": [
+        "It turns gradients into actual steps",
+        "It computes the gradients",
+        "Adam is one of them",
+        "It chooses the network size"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Computing the gradient is the backward pass. The optimiser decides how far and in which direction to move with it."
+    },
+    {
+      "id": "extrapolation",
+      "bild": "bilder/extrapolation.png",
+      "bildwunsch": "Sharp foreground: a wooden plank running out over the edge of a cliff into fog",
+      "frage": "What is extrapolation, and why is it dangerous?",
+      "antworten": [
+        "Predicting outside the range the model was fitted on",
+        "Predicting between two training points",
+        "The error can be orders of magnitude larger than inside the range",
+        "It only happens with polynomials"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Every model does it silently. Nothing in the output says you have left the range it was checked on."
+    },
+    {
+      "id": "kapazitaet",
+      "bild": "bilder/kapazitaet.png",
+      "bildwunsch": "Sharp foreground: a set of nested brass measuring cups of increasing size on dark wood",
+      "frage": "What is the capacity of a model?",
+      "antworten": [
+        "How much it can represent",
+        "How much memory it needs",
+        "Degree, width and depth all feed it",
+        "How fast it trains"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Capacity is what the model could fit. Training time decides which of those functions you end up with."
+    },
+    {
+      "id": "trainingsteil",
+      "bild": "bilder/trainingsteil.png",
+      "bildwunsch": "Sharp foreground: a well-thumbed ledger open on a desk, pages full of handwriting",
+      "frage": "What is the training set for?",
+      "antworten": [
+        "The model learns from it",
+        "You decide the network size on it",
+        "Its error says almost nothing about quality",
+        "It is opened once at the end"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "The training error measures how hard the model tried, not how good it is."
+    },
+    {
+      "id": "validierung",
+      "bild": "bilder/validierung.png",
+      "bildwunsch": "Sharp foreground: two nearly identical brass keys laid side by side, one being chosen",
+      "frage": "What is the validation set for?",
+      "antworten": [
+        "Deciding anything about the model: size, learning rate, when to stop",
+        "Training the weights",
+        "Choosing between several models",
+        "Reporting the final quality"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Everything you decide, you decide on it. The final number comes from the test set, once."
+    },
+    {
+      "id": "leakage",
+      "bild": "bilder/leakage.png",
+      "bildwunsch": "Sharp foreground: water seeping through the seam of a sealed wooden crate",
+      "frage": "What is leakage?",
+      "antworten": [
+        "Information from held-out data reaching the model",
+        "A model that is too large",
+        "Computing the scaling over all the data instead of the training part",
+        "Training for too long"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "The mean you subtracted is part of the model. Compute it over everything and your test number is worth less than you think."
+    },
+    {
+      "id": "fruehes-abbrechen",
+      "bild": "bilder/fruehes-abbrechen.png",
+      "bildwunsch": "Sharp foreground: a hand lifting a needle off a spinning record mid-groove",
+      "frage": "What is early stopping?",
+      "antworten": [
+        "Keeping the weights from the best validation checkpoint instead of the last",
+        "Aborting training when an error occurs",
+        "A form of regularisation that costs nothing extra",
+        "Training with fewer neurons"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "You still run the whole training, you just do not keep the end of it."
+    },
+    {
+      "id": "regularisierung",
+      "bild": "bilder/regularisierung.png",
+      "bildwunsch": "Sharp foreground: a tightened leather strap around a stack of drawings",
+      "frage": "What is regularisation?",
+      "antworten": [
+        "Anything that trades training accuracy for behaviour on new data",
+        "A way of making the training error smaller",
+        "Early stopping is an example",
+        "A preprocessing step"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "It always makes the training error worse. That is the point."
+    },
+    {
+      "id": "darstellung",
+      "bild": "bilder/darstellung.png",
+      "bildwunsch": "Sharp foreground: the same small building shown three times on one sheet: as two numbers, as a grid, as an outline",
+      "frage": "What is a representation, in this course?",
+      "antworten": [
+        "The form in which data reaches the model",
+        "A neutral description of the object",
+        "Always a decision about what may be noticed",
+        "The output of the model"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "There is no neutral representation. Two numbers for a floor plan is a decision, and so is a grid of 1024."
+    },
+    {
+      "id": "ausrichtung",
+      "bild": "bilder/ausrichtung.png",
+      "bildwunsch": "Sharp foreground: a paper plan being squared up against a T-square on a drawing board",
+      "frage": "Why are outlines centred and turned before rasterising?",
+      "antworten": [
+        "Otherwise the model learns position instead of shape",
+        "To make the images smaller",
+        "Because it decides what the model can learn at all",
+        "To remove courtyards"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "For a nearly square outline the principal axis is barely defined and can swing by ninety degrees. That is worth knowing about your own data."
+    },
+    {
+      "id": "flaschenhals",
+      "bild": "bilder/flaschenhals.png",
+      "bildwunsch": "Sharp foreground: the narrow waist of a large glass hourglass, a few grains hanging in it",
+      "frage": "What is the bottleneck of an autoencoder for?",
+      "antworten": [
+        "It forces the model to decide what matters",
+        "It speeds up training",
+        "Without it the model could just pass the input through",
+        "It makes the output equal the input"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "A wire would be a perfect autoencoder without the narrow part, and would have learned nothing."
+    },
+    {
+      "id": "rekonstruktion",
+      "bild": "bilder/rekonstruktion.png",
+      "bildwunsch": "Sharp foreground: a pencil tracing laid over a photograph of a building, the corners rounded off",
+      "frage": "What does the reconstruction of an autoencoder tell you?",
+      "antworten": [
+        "What survived the bottleneck",
+        "How accurate the model is in general",
+        "Which kind of information is discarded first",
+        "Whether the code is meaningful"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Ninety-five percent of cells correct sounds impressive until you notice that saying 'empty' everywhere gets seventy."
+    },
+    {
+      "id": "hauptkomponenten",
+      "bild": "bilder/hauptkomponenten.png",
+      "bildwunsch": "Sharp foreground: a three-dimensional wooden model casting a sharp recognisable shadow on a wall",
+      "frage": "What does principal component analysis do?",
+      "antworten": [
+        "It projects many numbers onto few",
+        "It makes the data smaller without loss",
+        "It keeps as much of the spread as possible",
+        "It sorts the data by importance"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "A shadow is two-dimensional and you still recognise the object, as long as the light comes from a sensible direction."
+    },
+    {
+      "id": "generativ",
+      "bild": "bilder/generativ.png",
+      "bildwunsch": "Sharp foreground: a printing plate and the fresh sheet it has just produced, ink still wet",
+      "frage": "What separates a generative model from a predicting one?",
+      "antworten": [
+        "It produces new examples instead of one number",
+        "It needs no training data",
+        "You can draw from it",
+        "It is always larger"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Same parts, pointed the other way. It very much needs training data."
+    },
+    {
+      "id": "prior",
+      "bild": "bilder/prior.png",
+      "bildwunsch": "Sharp foreground: a compass rose inlaid in a dark stone floor, one needle at the centre",
+      "frage": "What is the prior in a variational autoencoder?",
+      "antworten": [
+        "The distribution you are allowed to draw from",
+        "The distribution of the training data",
+        "Usually a standard normal, centred on zero",
+        "The first layer of the encoder"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Without it there is no honest answer to the question where to point in the code space."
+    },
+    {
+      "id": "kl-term",
+      "bild": "bilder/kl-term.png",
+      "bildwunsch": "Sharp foreground: two ropes pulling a brass ring in opposite directions over dark wood",
+      "frage": "What does the KL term in a VAE loss do?",
+      "antworten": [
+        "It pulls the codes towards the prior",
+        "It measures the reconstruction quality",
+        "It pulls against the reconstruction term",
+        "It makes the output sharper"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "The two terms fight. Reconstruction wants the codes far apart and tight, the KL term wants them overlapping at the origin."
+    },
+    {
+      "id": "temperatur",
+      "bild": "bilder/temperatur.png",
+      "bildwunsch": "Sharp foreground: a brass thermometer against a dark boiler, the needle between two marks",
+      "frage": "What does temperature control when sampling?",
+      "antworten": [
+        "How far from the middle of the distribution you draw",
+        "How fast the model computes",
+        "Variety against reliability",
+        "The size of the model"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Cold gives you the safest, most average output over and over. Hot leaves the region the model knows."
+    },
+    {
+      "id": "bedingt",
+      "bild": "bilder/bedingt.png",
+      "bildwunsch": "Sharp foreground: a card catalogue drawer pulled open, one labelled divider raised",
+      "frage": "What is conditional generation?",
+      "antworten": [
+        "Asking for a category, by feeding it to the model",
+        "Filtering the output afterwards",
+        "The condition goes into training and into sampling",
+        "It guarantees the category is respected"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "A model that ignores its condition looks exactly like one whose condition does not matter. Only more data tells you which you have."
+    },
+    {
+      "id": "vokabular",
+      "bild": "bilder/vokabular.png",
+      "bildwunsch": "Sharp foreground: a typesetter's case with compartments of lead letters, one compartment lit",
+      "frage": "What is the vocabulary of a language model?",
+      "antworten": [
+        "The set of tokens it can produce at all",
+        "All words of a language",
+        "A decision made before training",
+        "The training texts"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Anything outside the vocabulary is unrepresentable. Which is why real systems cut into word fragments."
+    },
+    {
+      "id": "autoregressiv",
+      "bild": "bilder/autoregressiv.png",
+      "bildwunsch": "Sharp foreground: a chain of paper strips laid end to end running into the dark",
+      "frage": "What does autoregressive mean?",
+      "antworten": [
+        "One token at a time, each conditioned on what came before",
+        "The model corrects itself afterwards",
+        "The output is fed back in as input",
+        "The model regresses to the mean"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "That is why generating a long text costs proportionally long: nothing can be produced in parallel."
+    },
+    {
+      "id": "kontextfenster",
+      "bild": "bilder/kontextfenster.png",
+      "bildwunsch": "Sharp foreground: a narrow slot in a heavy brass plate, a strip of writing visible through it",
+      "frage": "What is the context window?",
+      "antworten": [
+        "How far back the model is allowed to look",
+        "How much text it can output",
+        "A fixed limit set by the architecture",
+        "The size of the training data"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Our character model looked at eight characters. A large one looks at a hundred thousand tokens, and that is the main thing attention bought."
+    },
+    {
+      "id": "aufmerksamkeit",
+      "bild": "bilder/aufmerksamkeit.png",
+      "bildwunsch": "Sharp foreground: a reading lamp picking out three separate words on a dark printed page",
+      "frage": "What does attention add over a fixed window?",
+      "antworten": [
+        "The model decides which earlier positions matter",
+        "It makes the model smaller",
+        "It lets a word reach back across a paragraph",
+        "It removes the need for training"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "The T in GPT. Without it the window could not have grown."
+    },
+    {
+      "id": "vorwaertsprozess",
+      "bild": "bilder/vorwaertsprozess.png",
+      "bildwunsch": "Sharp foreground: a clear glass of water with ink being dropped into it, clouding",
+      "frage": "What is the forward process of a diffusion model?",
+      "antworten": [
+        "Adding noise step by step",
+        "Removing noise step by step",
+        "It needs no model at all",
+        "It is what the model learns"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Forwards is free and you can jump straight to any step. Only the way back costs a model."
+    },
+    {
+      "id": "entrauschen",
+      "bild": "bilder/entrauschen.png",
+      "bildwunsch": "Sharp foreground: a restorer's brush lifting grime from one corner of a dark painting",
+      "frage": "What does a diffusion model actually learn?",
+      "antworten": [
+        "To estimate the noise in a noisy input",
+        "To draw buildings",
+        "An ordinary regression with a squared error",
+        "To recognise good images"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "It never sees a building being built. It only ever answers: how much of this is noise?"
+    },
+    {
+      "id": "schritte",
+      "bild": "bilder/schritte.png",
+      "bildwunsch": "Sharp foreground: a worn wooden ladder against a dark wall, the top rungs fading",
+      "frage": "What does the steps setting do when generating?",
+      "antworten": [
+        "It decides how many rungs of the noise ladder you visit",
+        "It makes the image bigger",
+        "Cost grows linearly, benefit stops",
+        "More is always better"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "At some point the pictures stop changing in any way you could defend in a jury."
+    },
+    {
+      "id": "latente-diffusion",
+      "bild": "bilder/latente-diffusion.png",
+      "bildwunsch": "Sharp foreground: a small brass model of a building beside the full-size drawing it stands for",
+      "frage": "What is latent diffusion?",
+      "antworten": [
+        "Diffusion on codes instead of on pixels",
+        "A faster kind of noise",
+        "The reason these models fit on an ordinary machine",
+        "Diffusion without a decoder"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "An autoencoder brings the image down to a few numbers, the diffusion runs there, the decoder puts it back."
+    },
+    {
+      "id": "lora-staerke",
+      "bild": "bilder/lora-staerke.png",
+      "bildwunsch": "Sharp foreground: a brass dimmer knob on a dark panel, turned past its marked range",
+      "frage": "What does the strength slider next to a LoRA do?",
+      "antworten": [
+        "It scales the contribution of the added matrices",
+        "It retrains the LoRA",
+        "At zero you get the base model back",
+        "It changes the number of steps"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Beyond one you are pushing the adaptation further than it was trained for, and it starts eating the image."
+    },
+    {
+      "id": "vortraining",
+      "bild": "bilder/vortraining.png",
+      "bildwunsch": "Sharp foreground: a vast dark library seen from a doorway, one lamp near the entrance",
+      "frage": "What is pretraining, as opposed to fine-tuning and prompting?",
+      "antworten": [
+        "Building the base model from all the data, once",
+        "Adapting a finished model to your own data",
+        "The expensive one of the three",
+        "Typing instructions at a model"
+      ],
+      "richtig": [
+        0,
+        2
+      ],
+      "erklaerung": "Only two of the three change weights, and prompting is not one of them."
     }
   ]
 }
