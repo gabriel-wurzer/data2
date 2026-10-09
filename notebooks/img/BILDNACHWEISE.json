@@ -1,26 +1,74 @@
 [
- {
-  "titel": "File:1080 Lange Gasse 25.jpg",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/1080_Lange_Gasse_25.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "beschreibungsseite": "https://commons.wikimedia.org/wiki/File:1080_Lange_Gasse_25.jpg",
-  "lizenz": "CC BY-SA 4.0",
-  "autor": "Funke",
-  "datei": "C:\\temp\\data2\\notebooks\\img\\wien-zinshaus.jpg"
- },
- {
-  "titel": "File:Gradient descent.gif",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Gradient_descent.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "beschreibungsseite": "https://commons.wikimedia.org/wiki/File:Gradient_descent.gif",
-  "lizenz": "CC0",
-  "autor": "Jacopo Bertolotti",
-  "datei": "C:\\temp\\data2\\notebooks\\img\\gradient-descent.gif"
- },
- {
-  "titel": "File:Linear regression.svg",
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/1920px-Linear_regression.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "beschreibungsseite": "https://commons.wikimedia.org/wiki/File:Linear_regression.svg",
-  "lizenz": "Public domain",
-  "autor": "Sewaqu",
-  "datei": "C:\\temp\\data2\\notebooks\\img\\linear-regression.png"
- }
+  {
+    "titel": "File:1080 Lange Gasse 25.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/1080_Lange_Gasse_25.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "beschreibungsseite": "https://commons.wikimedia.org/wiki/File:1080_Lange_Gasse_25.jpg",
+    "lizenz": "CC BY-SA 4.0",
+    "autor": "Funke",
+    "datei": "C:\\temp\\data2\\notebooks\\img\\wien-zinshaus.jpg"
+  },
+  {
+    "titel": "File:Gradient descent.gif",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Gradient_descent.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "beschreibungsseite": "https://commons.wikimedia.org/wiki/File:Gradient_descent.gif",
+    "lizenz": "CC0",
+    "autor": "Jacopo Bertolotti",
+    "datei": "C:\\temp\\data2\\notebooks\\img\\gradient-descent.gif"
+  },
+  {
+    "titel": "File:Linear regression.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/1920px-Linear_regression.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "beschreibungsseite": "https://commons.wikimedia.org/wiki/File:Linear_regression.svg",
+    "lizenz": "Public domain",
+    "autor": "Sewaqu",
+    "datei": "C:\\temp\\data2\\notebooks\\img\\linear-regression.png"
+  },
+  {
+    "titel": "File:Mètre étalon (36, rue de Vaugirard, Paris).jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/M%C3%A8tre_%C3%A9talon_%2836%2C_rue_de_Vaugirard%2C_Paris%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "beschreibungsseite": "https://commons.wikimedia.org/wiki/File:M%C3%A8tre_%C3%A9talon_(36,_rue_de_Vaugirard,_Paris).jpg",
+    "lizenz": "CC BY-SA 3.0",
+    "autor": "<a href=\"//commons.wikimedia.org/wiki/User:Airair\" title=\"User:Airair\">Airair</a>",
+    "datei": "C:\\temp\\data2\\notebooks\\img\\metre-etalon.jpg"
+  },
+  {
+    "titel": "File:Wirepass slot canyon.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Wirepass_slot_canyon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "beschreibungsseite": "https://commons.wikimedia.org/wiki/File:Wirepass_slot_canyon.jpg",
+    "lizenz": "CC BY-SA 3.0",
+    "autor": "Jason J. Corneveaux",
+    "datei": "C:\\temp\\data2\\notebooks\\img\\slot-canyon.jpg"
+  },
+  {
+    "titel": "File:Mechanical-calculator-Brunsviga-15-01.jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Mechanical-calculator-Brunsviga-15-01.jpg/1280px-Mechanical-calculator-Brunsviga-15-01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "beschreibungsseite": "https://commons.wikimedia.org/wiki/File:Mechanical-calculator-Brunsviga-15-01.jpg",
+    "lizenz": "CC BY-SA 3.0",
+    "autor": "<a href=\"//commons.wikimedia.org/wiki/User:Cccefalon\" title=\"User:Cccefalon\">CEphoto, Uwe Aranas</a>",
+    "datei": "C:\\temp\\data2\\notebooks\\img\\brunsviga.jpg"
+  },
+  {
+    "titel": "File:Reval 1855-02-09 church letter wax seal (cropped).jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Reval_1855-02-09_church_letter_wax_seal_%28cropped%29.jpg/1280px-Reval_1855-02-09_church_letter_wax_seal_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "beschreibungsseite": "https://commons.wikimedia.org/wiki/File:Reval_1855-02-09_church_letter_wax_seal_(cropped).jpg",
+    "lizenz": "Public domain",
+    "autor": "Postal authorities of the Russian Empire (Estonia)",
+    "datei": "C:\\temp\\data2\\notebooks\\img\\wachssiegel.jpg"
+  },
+  {
+    "titel": "File:Straßenschild Brüder-Heindl-Gasse (Wien).jpg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Stra%C3%9Fenschild_Br%C3%BCder-Heindl-Gasse_%28Wien%29.jpg/1280px-Stra%C3%9Fenschild_Br%C3%BCder-Heindl-Gasse_%28Wien%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "beschreibungsseite": "https://commons.wikimedia.org/wiki/File:Stra%C3%9Fenschild_Br%C3%BCder-Heindl-Gasse_(Wien).jpg",
+    "lizenz": "CC BY-SA 4.0",
+    "autor": "Christian Michelides",
+    "datei": "C:\\temp\\data2\\notebooks\\img\\strassenschild.jpg"
+  },
+  {
+    "titel": "File:Casse de typographe, Grandjean - musée Champollion.JPG",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Casse_de_typographe%2C_Grandjean_-_mus%C3%A9e_Champollion.JPG/1280px-Casse_de_typographe%2C_Grandjean_-_mus%C3%A9e_Champollion.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "beschreibungsseite": "https://commons.wikimedia.org/wiki/File:Casse_de_typographe,_Grandjean_-_mus%C3%A9e_Champollion.JPG",
+    "lizenz": "CC BY 3.0",
+    "autor": "<a href=\"//commons.wikimedia.org/wiki/User:VIGNERON\" title=\"User:VIGNERON\">VIGNERON</a>",
+    "datei": "C:\\temp\\data2\\notebooks\\img\\setzkasten.jpg"
+  }
 ]
