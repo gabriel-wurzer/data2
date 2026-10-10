@@ -5,16 +5,21 @@ Der Lehrtext steht im Notebook `notebooks/01_neuron.ipynb`, hier steht nur, was 
 
 ## Zeitraster
 
-- 0 bis 10: Anmeldung, Notebook öffnen, erste Zelle. Wer nicht hineinkommt, arbeitet zu zweit.
-- 10 bis 25: Punktwolke und Karte, eigene Gerade am Regler, Fehler aufschreiben lassen.
-- 25 bis 50: Neuron, Fehlerlandschaft, 3D-Fläche drehen.
-- 50 bis 60: Pause.
-- 60 bis 85: Lücke ausfüllen, stabiler Lauf, dann Divergenz bei Lernrate 0.04.
-  Zeitnot: zuerst fällt der Zusatz mit den Kleinstquadraten weg, dann wandert der zweite Lauf
-  in die Hausübung.
-- 85 bis 95: Residuenkarte, das eigene Haus wiederfinden, die Ansage zur Rechenvorschrift.
+Schritte wie im Notebook. Die Zeiten sind knapp; die Kastenzeiten bei Schritt 3 und 7 ansagen.
+
+- 0 bis 10: Anmeldung, Repo klonen, Schritt 1. Wer nicht hineinkommt, arbeitet zu zweit.
+- 10 bis 25: Schritt 2 (Punktwolke, Kompaktheit) und Schritt 3 (eigenes Haus auf der Karte,
+  höchstens fünf Minuten suchen, dann irgendeines nehmen).
+- 25 bis 45: Schritt 4 bis 6: Gerade als Modell, MSE an drei Häusern, Regler.
+- 45 bis 55: Pause.
+- 55 bis 65: Schritt 7: Gradient, eigenes w eintippen, höchstens zehn Minuten.
+- 65 bis 80: Schritt 8: Lücke im Lernloop, Etappentabelle. Die Animation nur, wenn Zeit ist.
+- 80 bis 90: Schritt 9: Residuenkarte, das eigene Haus, die Ansage zur Rechenvorschrift; Tests.
+- 90 bis 95: Puffer.
 - 95 bis 105: Kurztest.
-- 105 bis 120: Hausübung, Fragen, Puffer.
+- 105 bis 120: Hausübung vorstellen (dort jetzt auch die zu große Lernrate), Fragen, Puffer.
+
+Zeitnot: Etappenzelle nach der Animation nur zeigen, nicht besprechen.
 
 ## Vorher zu erledigen
 
@@ -33,5 +38,5 @@ Es gilt `kursregeln.md`: Auflösung nach zehn Minuten, ohne Abzug, und ohne Abga
 
 ## Zahlen, die in der Stunde fallen
 
-Optimum auf dem aktuellen Datensatz: w = 8,5, b = 109, Fehler 50,3. Divergenz ab Lernrate
+Optimum auf dem aktuellen Datensatz: w = 8,5, b = 109, MSE 50,3; mit b = 110 fest bester ganzzahliger Regler w = 8, MSE 53. Divergenz ab Lernrate
 0,0299 (nachgerechnet), deshalb 0,04 für das Gegenbeispiel. Datensatz: 1073 Gebäude.
