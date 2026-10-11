@@ -20,10 +20,13 @@ September 2026 aus einer anderen Sitzung heraus; diese Datei ersetzt deren Gedä
 Das Material ist **englisch**, auch die Oberflächen der Apps, unabhängig davon, in welcher
 Sprache der Auftrag kam. Die Planung in `sessions/` ist deutsch.
 
+Code und Daten tragen nur englische Namen: Variablen, Funktionen, Spalten, Dateien. Deutsche
+Wörter kommen nur als Inhalt vor (etwa "Vor 1683", Straßennamen).
+
 Jede Einheit endet mit "Tests" und "Where you stand now". Die Tests rechnen nach, sie
 prüfen nicht nur auf Vorhandensein. Die Begriffe am Schluss stehen auch in den Lernkarten.
 
-Die Spalte `hwb` in `gebaeude_wien.csv` ist **nicht gemessen**, sondern aus U-Wert und
+Die Spalte `heating_demand` in `buildings_vienna.csv` ist **nicht gemessen**, sondern aus U-Wert und
 Kompaktheit gerechnet. Das steht in jedem Notebook, das sie verwendet, und ist der Grund,
 warum ab Einheit 3 Rauschen aufgelegt wird. Ein Modell, das sie exakt trifft, hat eine
 Rechenvorschrift rückwärts ausgefischt und nichts über Häuser gelernt. Das wird im Material

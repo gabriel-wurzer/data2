@@ -13,7 +13,7 @@ import torch
 import torch.nn as nn
 
 HIER = Path(__file__).resolve().parent
-BILDER = HIER / "grundrisse.npy"
+BILDER = HIER / "floorplans.npy"
 ENGEN = (32, 8, 2)
 EPOCHEN = 400
 STAPEL = 64

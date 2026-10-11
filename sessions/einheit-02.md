@@ -25,7 +25,7 @@ Am Ende der Einheit können die Studierenden
 
 ## Ablauf
 
-0 bis 15: Die zweite Eingangsgröße. `hwb = w1 * kompaktheit + w2 * u_wert + b`, dieselbe
+0 bis 15: Die zweite Eingangsgröße. `heating_demand = w1 * compactness + w2 * u_value + b`, dieselbe
 Schleife wie letzte Woche, nur ein Gewicht mehr. Sie läuft, und sie kommt nicht an: nach
 dreitausend Schritten steht der Fehler bei 43, nicht bei null. Das ist kein Unfall, das ist
 der Einstieg. Die beiden Eingänge haben verschiedene Größenordnungen, der U-Wert liegt um

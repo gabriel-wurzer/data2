@@ -12,7 +12,7 @@ import urllib.request
 from pathlib import Path
 
 HIER = Path(__file__).resolve().parent
-ZIEL = HIER / "strassennamen.txt"
+ZIEL = HIER / "street_names.txt"
 WFS = "https://data.wien.gv.at/daten/geo"
 KOPF = {"User-Agent": "aiape-kurs/1.0 (lehre, TU Wien)"}
 

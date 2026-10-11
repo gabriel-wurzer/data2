@@ -1,6 +1,6 @@
 """Grundrisspolygone ausrichten und in ein 32x32-Raster legen.
 
-Aus `gebaeude_wien.geojson` wird ein Stapel Schwarzweissbilder, einer je Gebaeude, plus eine
+Aus `buildings_vienna.geojson` wird ein Stapel Schwarzweissbilder, einer je Gebaeude, plus eine
 Tabelle mit Gebaeude-Nummer und Bauperiode in derselben Reihenfolge. Das ist der Eingang fuer
 Einheit 4.
 
@@ -18,9 +18,9 @@ from pathlib import Path
 import numpy as np
 
 HIER = Path(__file__).resolve().parent
-GEOJSON = HIER / "gebaeude_wien.geojson"
-BILDER = HIER / "grundrisse.npy"
-TABELLE = HIER / "grundrisse.csv"
+GEOJSON = HIER / "buildings_vienna.geojson"
+BILDER = HIER / "floorplans.npy"
+TABELLE = HIER / "floorplans.csv"
 N = 32
 RAND = 0.12                      # Anteil des Bildes, der ringsum frei bleibt
 
@@ -121,9 +121,9 @@ def rastere(ringe_m, dreh, mitte):
 
 
 def tabelle_lesen():
-    """Die Kennwerte aus gebaeude_wien.csv, nach Gebaeude-Nummer. Das GeoJSON hat nur id
+    """Die Kennwerte aus buildings_vienna.csv, nach Gebaeude-Nummer. Das GeoJSON hat nur id
     und Bauperiode, alles andere steht in der Tabelle."""
-    zeilen = (HIER / "gebaeude_wien.csv").read_text(encoding="utf-8").strip().splitlines()
+    zeilen = (HIER / "buildings_vienna.csv").read_text(encoding="utf-8").strip().splitlines()
     kopf = zeilen[0].split(",")
     nach = {}
     for zeile in zeilen[1:]:
@@ -156,14 +156,14 @@ def main():
             continue
         k = kennwerte.get(str(eigenschaften.get("id")), {})
         bilder.append(bild)
-        zeilen.append((eigenschaften.get("id"), eigenschaften.get("bauperiode"),
-                       k.get("startjahr", ""), k.get("flaeche_m2", ""),
-                       k.get("kompaktheit", ""), round(rundheit, 4),
+        zeilen.append((eigenschaften.get("id"), eigenschaften.get("construction_period"),
+                       k.get("start_year", ""), k.get("area_m2", ""),
+                       k.get("compactness", ""), round(rundheit, 4),
                        round(float(bild.mean()), 4)))
 
     stapel = np.stack(bilder).astype(np.float32)
     np.save(BILDER, stapel)
-    kopf = "id,bauperiode,startjahr,flaeche_m2,kompaktheit,rundheit,fuellgrad\n"
+    kopf = "id,construction_period,start_year,area_m2,compactness,roundness,fill_ratio\n"
     TABELLE.write_text(kopf + "\n".join(",".join(str(v) for v in z) for z in zeilen) + "\n",
                        encoding="utf-8")
     print(f"{len(stapel)} grundrisse gerastert, {verworfen} verworfen")

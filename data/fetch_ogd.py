@@ -27,10 +27,10 @@ BBOXEN = [
     (16.480, 48.215, 16.540, 48.245),
 ]
 MAX = 2500
-OUT = Path(__file__).with_name("gebaeude_wien.csv")
+OUT = Path(__file__).with_name("buildings_vienna.csv")
 # Die Grundrisse selbst, für alles ab Einheit 4: rastern, Autoencoder, Formkarte. Ohne die
 # Geometrie bleiben nur die abgeleiteten Zahlen übrig, und aus denen wird kein Grundriss mehr.
-OUT_GEO = Path(__file__).with_name("gebaeude_wien.geojson")
+OUT_GEO = Path(__file__).with_name("buildings_vienna.geojson")
 
 # Angenommener Wand-U-Wert je Bauperiode des Layers. Das sind Lehrwerte in der
 # Größenordnung der österreichischen Gebäudetypologie, keine erhobenen Kennwerte: die
@@ -135,18 +135,18 @@ def main():
         geometrien.append({
             "type": "Feature",
             "geometry": geom,
-            "properties": {"id": p["OBJECTID"], "bauperiode": periode},
+            "properties": {"id": p["OBJECTID"], "construction_period": periode},
         })
         zeilen.append({
             "id": p["OBJECTID"],
-            "bauperiode": periode,
-            "startjahr": startjahr(periode),
-            "bautyp": (p.get("BAUTYP_TXT") or "").split("-")[0],
-            "flaeche_m2": round(a, 1),
-            "umfang_m": round(u, 1),
-            "kompaktheit": round(kompakt, 3),
-            "u_wert": uw,
-            "hwb": round(hwb, 2),
+            "construction_period": periode,
+            "start_year": startjahr(periode),
+            "building_type": (p.get("BAUTYP_TXT") or "").split("-")[0],
+            "area_m2": round(a, 1),
+            "perimeter_m": round(u, 1),
+            "compactness": round(kompakt, 3),
+            "u_value": uw,
+            "heating_demand": round(hwb, 2),
             "lat": round(lat0, 6),
             "lon": round(lon0, 6),
         })

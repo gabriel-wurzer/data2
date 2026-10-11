@@ -108,12 +108,12 @@ def trainiere(X, C, klassen, i_tr, i_va, samen=0):
 
 
 def main():
-    bilder = np.load(HIER / "grundrisse.npy")
+    bilder = np.load(HIER / "floorplans.npy")
     X = torch.tensor(bilder.reshape(len(bilder), -1), dtype=torch.float32)
 
-    tabelle = np.genfromtxt(HIER / "grundrisse.csv", delimiter=",", names=True,
+    tabelle = np.genfromtxt(HIER / "floorplans.csv", delimiter=",", names=True,
                             dtype=None, encoding="utf-8")
-    gruppen = np.array([gruppe(j) for j in tabelle["startjahr"]])
+    gruppen = np.array([gruppe(j) for j in tabelle["start_year"]])
     C = torch.zeros(len(X), len(GRUPPEN))
     C[torch.arange(len(X)), torch.tensor(gruppen)] = 1.0
     print("buildings per group:", {GRUPPEN[g]: int((gruppen == g).sum())

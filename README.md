@@ -24,7 +24,7 @@ der Stadt Wien. Alles läuft auf einer CPU.
 ## Daten
 
 `fetch_ogd.py` holt die Gebäudetypologie aus dem offenen Datenportal (Layer
-`ogdwien:GEBAEUDETYPOGD`) und schreibt `gebaeude_wien.csv` und `.geojson`. Die Spalte `hwb`
+`ogdwien:GEBAEUDETYPOGD`) und schreibt `buildings_vienna.csv` und `.geojson`. Die Spalte `heating_demand`
 ist **nicht gemessen**, sondern aus U-Wert und Kompaktheit gerechnet; das steht in jedem
 Notebook, das sie verwendet, und ist der Grund, warum ab Einheit 3 Rauschen aufgelegt wird.
 

@@ -139,9 +139,9 @@ def main():
     torch.save(modell.state_dict(), HIER / "diffusion.pt")
 
     # LoRA auf die schlanksten Grundrisse: das untere Viertel nach Fuellgrad
-    tabelle = np.genfromtxt(HIER / "grundrisse.csv", delimiter=",", names=True,
+    tabelle = np.genfromtxt(HIER / "floorplans.csv", delimiter=",", names=True,
                             dtype=None, encoding="utf-8")
-    fuell = tabelle["fuellgrad"].astype(float)
+    fuell = tabelle["fill_ratio"].astype(float)
     schlank = fuell < np.quantile(fuell, 0.25)
     print(f"lora subset: {int(schlank.sum())} of {len(Z)} buildings, fill below "
           f"{np.quantile(fuell, 0.25):.3f}")
@@ -157,9 +157,9 @@ def main():
               lernrate=1e-3)
 
     torch.save({n: t for n, t in modell.state_dict().items()
-                if n.endswith(".a") or n.endswith(".b")}, HIER / "lora_schlank.pt")
-    np.save(HIER / "lora_auswahl.npy", schlank)
-    print("written: diffusion.pt, lora_schlank.pt, lora_auswahl.npy")
+                if n.endswith(".a") or n.endswith(".b")}, HIER / "lora_narrow.pt")
+    np.save(HIER / "lora_selection.npy", schlank)
+    print("written: diffusion.pt, lora_narrow.pt, lora_selection.npy")
 
 
 if __name__ == "__main__":

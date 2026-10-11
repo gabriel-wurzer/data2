@@ -1,4 +1,4 @@
-id,bauperiode,startjahr,bautyp,flaeche_m2,umfang_m,kompaktheit,u_wert,hwb,lat,lon
+id,construction_period,start_year,building_type,area_m2,perimeter_m,compactness,u_value,heating_demand,lat,lon
 24155178,1860-1883,1860,W3.7.,511.0,119.5,5.287,1.5,158.59,48.195475,16.35084
 23453676,1884-1918,1884,W3.1.,83.4,38.7,4.236,1.45,146.03,48.192148,16.346035
 23457050,1884-1918,1884,W3.1.,83.2,58.2,6.385,1.45,165.36,48.192264,16.346034

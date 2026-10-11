@@ -1,4 +1,4 @@
-id,bauperiode,startjahr,flaeche_m2,kompaktheit,rundheit,fuellgrad
+id,construction_period,start_year,area_m2,compactness,roundness,fill_ratio
 24155178,1860-1883,1860,511.0,5.287,0.1493,0.2158
 23453676,1884-1918,1884,83.4,4.236,0.2566,0.3828
 23457050,1884-1918,1884,83.2,6.385,0.0315,0.1191

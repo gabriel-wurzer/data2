@@ -11,7 +11,7 @@ darf. Heute geht es um diese Entscheidung selbst, und der Eingang ist ab jetzt d
 
 Gerechnet wird auf den Grundrisspolygonen selbst. Die lagen bis heute nicht im Datensatz:
 `fetch_ogd.py` hat aus jedem Polygon Fläche und Umfang gerechnet und die Form danach
-weggeworfen. Das Skript schreibt jetzt zusätzlich `gebaeude_wien.geojson`, mit Außenring,
+weggeworfen. Das Skript schreibt jetzt zusätzlich `buildings_vienna.geojson`, mit Außenring,
 Höfen und mehrteiligen Bauwerken, über die Gebäude-Nummer mit der Tabelle verbunden.
 
 ## Lernziele
