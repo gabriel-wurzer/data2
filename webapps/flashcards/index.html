@@ -88,6 +88,8 @@ async function start() {
 function menu() {
   const progress = store.read();
   const open = state.cards.filter(c => !sitting(progress, c)).length;
+  const halfway = state.cards.filter(c => (progress[c.id] || 0) === 1).length;   // right once so far
+  const done = state.cards.length - open;
   const sessions = [...new Set(state.cards.map(c => c.session))].sort((a, b) => a - b);
   app.innerHTML = `
     ${pitSvg()}
@@ -96,6 +98,8 @@ function menu() {
     picture, a question and more than one correct answer. New sessions appear here as the course
     goes on.</p>
     <button class="main-button" id="b-open">Everything not sitting yet, ${open}</button>
+    <p class="small">${done} sitting · ${halfway} halfway there · ${open - halfway} not yet.
+    A card sits once you get it right twice in a row.</p>
     <h2>A random mix from all sessions</h2>
     <div class="row">
       <input id="n-random" type="number" min="1" max="${state.cards.length}"
@@ -185,9 +189,12 @@ function check() {
   const progress = store.read();
   progress[card.id] = ok ? Math.min((progress[card.id] || 0) + 1, 3) : 0;
   store.write(progress);
+  const verdict = !ok ? "Not yet."                                  // what to tell the player
+                : progress[card.id] >= 2 ? "Right, and now it sits."
+                : "Right. Get it right once more and it sits.";
 
   document.getElementById("after").innerHTML = `
-    <div class="explanation"><b>${ok ? "That sits." : "Not yet."}</b> ${card.explanation}</div>
+    <div class="explanation"><b>${verdict}</b> ${card.explanation}</div>
     <button class="main-button" id="b-next">${state.index + 1 < state.round.length ? "Next" : "Result"}</button>`;
   document.getElementById("b-next").onclick = () => {
     state.index++;

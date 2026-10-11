@@ -1,6 +1,6 @@
 // The shell is cached up front; card pictures only when a card comes up, since nobody wants
 // to download two megabytes per card in advance.
-const CACHE = "flashcards-v1";
+const CACHE = "flashcards-v2";
 const FILES = ["./", "./index.html", "./cards.json", "./manifest.json",
                "./icon.svg", "./icon-192.png", "./icon-512.png"];
 
