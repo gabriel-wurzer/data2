@@ -4,7 +4,7 @@
     {
       "id": "model",
       "session": 1,
-      "image": "images/surrogate.png",
+      "image": "images/model.png",
       "question": "What is a model, in this course?",
       "answers": [
         "A simplified rule that predicts an output from inputs",

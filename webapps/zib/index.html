@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0c10">
+<title>Zeit im Bild</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #0a0c10; --karte: #131720; --rand: #232a36; --text: #e9edf4;
+    --matt: #8a93a3; --gut: #3fa46a; --schlecht: #c0453c; --akzent: #c8342b;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text); font-size: 17px; line-height: 1.5;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+  }
+  main { max-width: 620px; margin: 0 auto; padding-bottom: 32px; }
+  h1 { font-size: 22px; letter-spacing: .02em; margin: 20px 0 4px; }
+  p.matt { color: var(--matt); margin: 4px 0 20px; }
+  button {
+    font: inherit; color: inherit; background: var(--karte); border: 1px solid var(--rand);
+    border-radius: 12px; padding: 14px 16px; width: 100%; text-align: left; margin-bottom: 10px;
+    cursor: pointer;
+  }
+  button:active { transform: scale(.995); }
+  button.richtig { border-color: var(--gut); background: #14261d; }
+  button.falsch { border-color: var(--schlecht); background: #2a1715; }
+  button.verpasst { border-color: var(--gut); border-style: dashed; }
+  button[disabled] { cursor: default; }
+  .haupt { background: var(--akzent); color: #fff; border: none; text-align: center; font-weight: 600; }
+  .bild {
+    width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px;
+    background: #0f131b; border: 1px solid var(--rand); display: block;
+  }
+  .platzhalter { display: grid; place-items: center; color: var(--matt); font-size: 14px; text-align: center; padding: 16px; }
+  .frage { font-size: 19px; font-weight: 600; margin: 16px 0 6px; }
+  .hinweis { color: var(--matt); font-size: 14px; margin-bottom: 14px; }
+  .leiste { display: flex; gap: 10px; align-items: center; color: var(--matt); font-size: 14px; margin-bottom: 8px; }
+  .fortschritt { flex: 1; height: 6px; background: var(--rand); border-radius: 3px; overflow: hidden; }
+  .fortschritt > i { display: block; height: 100%; background: var(--akzent); width: 0; }
+  .erklaerung { border-left: 3px solid var(--akzent); padding: 10px 14px; background: #121722; border-radius: 0 10px 10px 0; margin: 14px 0; }
+  .schlagzeile {
+    border: 1px solid #3a2a1a; background: #1a1410; border-radius: 10px; padding: 12px 14px;
+    margin: 14px 0; color: #e8d9b8;
+  }
+  .schlagzeile b { display: block; font-size: 13px; letter-spacing: .08em; text-transform: uppercase;
+    color: #a98b55; margin-bottom: 4px; font-weight: 600; }
+  .studio { width: 100%; height: auto; margin: 8px 0 16px; border-radius: 14px; border: 1px solid var(--rand); }
+  .klein { font-size: 14px; color: var(--matt); }
+  .anruf { font-size: 18px; margin: 0 0 18px; }
+  .anruf em { color: var(--matt); font-style: normal; }
+  .punktekasten {
+    text-align: center; padding: 28px 16px 22px; margin: 24px 0 16px;
+    background: var(--karte); border: 1px solid var(--rand); border-radius: 16px;
+  }
+  .punkte { font-size: 72px; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+  .von { color: var(--matt); margin-top: 6px; }
+  .teil { color: var(--matt); font-size: 14px; margin-top: 10px; }
+  .betreuer {
+    border: 1px solid var(--akzent); background: #23100e; color: #f3d9d6;
+    border-radius: 12px; padding: 14px 16px; font-weight: 600; text-align: center;
+    margin-bottom: 18px;
+  }
+  .folie {
+    background: var(--karte); border: 1px solid var(--rand); border-radius: 16px;
+    padding: 26px 22px 24px; margin: 20px 0 16px; min-height: 240px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .folie-quelle {
+    font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--akzent);
+    font-weight: 600; margin-bottom: 14px;
+  }
+  .folie-zeile { font-size: 28px; line-height: 1.22; font-weight: 700; letter-spacing: -.01em; }
+  .folie-fuss { color: var(--matt); font-size: 15px; margin-top: 16px; }
+</style>
+</head>
+<body>
+<main id="app"></main>
+
+<script>
+const S = { fragen: [], i: 0, gezeigt: false, richtig: 0, schlagzeilen: [], reihenfolge: [] };
+const app = document.getElementById("app");
+
+// Ohne das stünde die richtige Antwort immer an derselben Stelle, und nach drei Fragen
+// klickt jeder nur noch oben.
+function mische(feld) {
+  const a = [...feld];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+async function start() {
+  const daten = await fetch("fragen.json").then(r => r.json());
+  S.fragen = daten.fragen;
+  anruf();
+}
+
+function anruf() {
+  app.innerHTML = `
+    ${studioSvg()}
+    <h1>The call</h1>
+    <p class="anruf">The phone rings. <em>ORF, newsroom of Zeit im Bild.</em> Would you be
+    willing to give a short interview tonight? You do work on artificial intelligence at the
+    TU, after all.</p>
+    <p class="matt">${S.fragen.length} questions, one answer each. There is no going back:
+    once you have said it, it is said, and the newsroom keeps it.</p>
+    <button class="haupt" id="b-los">Yes, gladly</button>`;
+  document.getElementById("b-los").onclick = los;
+}
+
+function los() {
+  S.i = 0; S.richtig = 0; S.schlagzeilen = [];
+  frage();
+}
+
+function frage() {
+  const f = S.fragen[S.i];
+  S.gezeigt = false;
+  const anteil = Math.round((S.i / S.fragen.length) * 100);
+  app.innerHTML = `
+    <div class="leiste"><span>Question ${S.i + 1} / ${S.fragen.length}</span>
+      <span class="fortschritt"><i style="width:${anteil}%"></i></span>
+      <span>${S.richtig} right</span></div>
+    <img class="bild" src="${f.bild}" alt="" onerror="this.replaceWith(platzhalter())">
+    <div class="frage">${f.frage}</div>
+    <div class="hinweis">One answer. It counts the moment you touch it.</div>
+    <div id="antworten"></div>
+    <div id="nach"></div>`;
+  const kasten = document.getElementById("antworten");
+  S.reihenfolge = mische([...f.antworten.keys()]);
+  S.reihenfolge.forEach(urspruenglich => {
+    const b = document.createElement("button");
+    b.textContent = f.antworten[urspruenglich];
+    b.onclick = () => antworte(urspruenglich);
+    kasten.appendChild(b);
+  });
+}
+
+function platzhalter() {
+  const d = document.createElement("div");
+  d.className = "bild platzhalter";
+  d.textContent = "image still missing";
+  return d;
+}
+
+function antworte(gewaehlt) {
+  if (S.gezeigt) return;
+  S.gezeigt = true;
+  const f = S.fragen[S.i];
+  const stimmt = gewaehlt === f.richtig;
+  if (stimmt) S.richtig++;
+
+  const knoepfe = [...document.querySelectorAll("#antworten button")];
+  knoepfe.forEach((b, pos) => {
+    const n = S.reihenfolge[pos];
+    b.disabled = true;
+    if (n === gewaehlt && stimmt) b.classList.add("richtig");
+    else if (n === gewaehlt) b.classList.add("falsch");
+    else if (n === f.richtig) b.classList.add("verpasst");
+  });
+
+  const zeile = (f.schlagzeilen || {})[String(gewaehlt)];
+  if (zeile) S.schlagzeilen.push(zeile);
+
+  document.getElementById("nach").innerHTML = `
+    <div class="erklaerung"><b>${stimmt ? "That holds." : "That is going to be quoted."}</b>
+      ${f.erklaerung}</div>
+    ${zeile ? `<div class="schlagzeile"><b>Tomorrow's paper</b>“${zeile}”</div>` : ""}
+    <button class="haupt" id="b-weiter">${
+      S.i + 1 < S.fragen.length ? "Next question" : "End of broadcast"}</button>`;
+  document.getElementById("b-weiter").onclick = () => {
+    S.i++;
+    S.i < S.fragen.length ? frage() : ende();
+  };
+}
+
+function ende() {
+  const punkte = Math.round(100 * S.richtig / S.fragen.length);
+  const urteil = punkte >= 85
+    ? "The newsroom will call again. Nothing in there can be cut into something else."
+    : punkte >= 60
+      ? "Serviceable. Two or three sentences get taken out of context; you will live."
+      : punkte >= 35
+        ? "The piece airs anyway. Ninety seconds, two of your sentences, one of them the wrong one."
+        : "The institute will be taking phone calls tomorrow.";
+  app.innerHTML = `
+    <div class="punktekasten">
+      <div class="punkte">${punkte}</div>
+      <div class="von">out of 100 points</div>
+      <div class="teil">${S.richtig} of ${S.fragen.length} answers right</div>
+    </div>
+    <div class="betreuer">Leave this page open and call your tutor.</div>
+    <p class="matt">${urteil}</p>
+    <button class="haupt" id="b-abspann">What the media made of it</button>
+    <button id="b-nochmal" class="klein">Start over</button>`;
+  document.getElementById("b-abspann").onclick = () => abspann(0);
+  document.getElementById("b-nochmal").onclick = () => {
+    if (confirm("Your result will be lost. Start over?")) los();
+  };
+}
+
+// Der Abspann. Eine Folie je Schlagzeile, in der Reihenfolge, in der sie entstanden sind,
+// jede einem Medium in den Mund gelegt. Kein Neustart hier: der gehoert auf die Ergebnisfolie.
+const MEDIEN = ["ORF.at", "Der Standard", "Kronen Zeitung", "Die Presse", "Ö1 Mittagsjournal",
+                "Kurier", "Social media", "The corridor at your institute"];
+
+function abspann(n) {
+  if (!S.schlagzeilen.length) {
+    app.innerHTML = `
+      <div class="folie">
+        <div class="folie-quelle">The next morning</div>
+        <div class="folie-zeile">Nothing.</div>
+        <div class="folie-fuss">Not a single sentence worth pulling out of context. This is
+        what a good interview looks like from the outside: invisible.</div>
+      </div>
+      <button class="haupt" id="b-zurueck">Back to the result</button>`;
+    document.getElementById("b-zurueck").onclick = ende;
+    return;
+  }
+  if (n >= S.schlagzeilen.length) {
+    app.innerHTML = `
+      <div class="folie">
+        <div class="folie-quelle">End of coverage</div>
+        <div class="folie-zeile">${S.schlagzeilen.length} ${
+          S.schlagzeilen.length === 1 ? "sentence" : "sentences"} of yours survived the edit.</div>
+        <div class="folie-fuss">Not one of them is a quote you would sign, and every one of
+        them is something you said. That is the whole exercise.</div>
+      </div>
+      <button class="haupt" id="b-zurueck">Back to the result</button>`;
+    document.getElementById("b-zurueck").onclick = ende;
+    return;
+  }
+  app.innerHTML = `
+    <div class="leiste"><span>${n + 1} / ${S.schlagzeilen.length}</span>
+      <span class="fortschritt"><i style="width:${
+        Math.round(100 * n / S.schlagzeilen.length)}%"></i></span>
+      <span>coverage</span></div>
+    <div class="folie">
+      <div class="folie-quelle">${MEDIEN[n % MEDIEN.length]}</div>
+      <div class="folie-zeile">${S.schlagzeilen[n]}</div>
+    </div>
+    <button class="haupt" id="b-weiter">Next</button>`;
+  document.getElementById("b-weiter").onclick = () => abspann(n + 1);
+}
+
+function studioSvg() {
+  return `<svg class="studio" viewBox="0 0 620 280" role="img" aria-label="television studio">
+    <defs>
+      <linearGradient id="wand" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1a2130"/><stop offset="100%" stop-color="#0a0c10"/>
+      </linearGradient>
+      <radialGradient id="licht" cx="50%" cy="0%" r="70%">
+        <stop offset="0%" stop-color="#c8342b" stop-opacity=".30"/>
+        <stop offset="100%" stop-color="#c8342b" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="620" height="280" fill="url(#wand)"/>
+    <rect width="620" height="280" fill="url(#licht)"/>
+    ${[...Array(14)].map((_, n) =>
+      `<rect x="${20 + n * 43}" y="${40 + (n % 4) * 9}" width="26" height="${70 - (n % 3) * 14}"
+             rx="2" fill="#141a26"/>`).join("")}
+    <rect x="150" y="196" width="320" height="58" rx="6" fill="#151b27"/>
+    <rect x="150" y="196" width="320" height="6" rx="3" fill="#c8342b"/>
+    <g transform="translate(310 150)">
+      <ellipse cx="0" cy="48" rx="46" ry="9" fill="#0a0c10" opacity=".6"/>
+      <path d="M0 -6 q26 10 30 52 L-30 46 q4 -42 30 -52z" fill="#e9edf4" opacity=".9"/>
+      <circle cx="0" cy="-26" r="19" fill="#e9edf4" opacity=".9"/>
+      <rect x="-5" y="4" width="10" height="26" rx="4" fill="#2a3242"/>
+    </g>
+    <g transform="translate(74 60)">
+      <rect x="-14" y="-10" width="28" height="20" rx="3" fill="#232a36"/>
+      <path d="M14 -6 L34 -16 L34 16 L14 6 z" fill="#2e3648"/>
+      <circle cx="0" cy="0" r="4" fill="#c8342b"/>
+    </g>
+  </svg>`;
+}
+
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+start();
+</script>
+</body>
+</html>

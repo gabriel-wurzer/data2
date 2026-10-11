@@ -1,0 +1,347 @@
+{
+  "titel": "Zeit im Bild",
+  "fragen": [
+    {
+      "id": "what-is-ai",
+      "bild": "bilder/what-is-ai.png",
+      "bildwunsch": "A chrome humanoid head in three-quarter view, one eye socket glowing red, half sunk in shadow, shot like a news still",
+      "frage": "Let us start simply. What is artificial intelligence?",
+      "antworten": [
+        "An umbrella term for methods that have changed completely over seventy years",
+        "Software that thinks the way a human does",
+        "A machine that is aware of itself",
+        "The technology behind ChatGPT"
+      ],
+      "richtig": 0,
+      "erklaerung": "What counts as AI keeps moving. Chess programs and spell checkers were AI once and are software now. Awareness is not part of any definition anybody works with, and ChatGPT is one product in a seventy-year-old field.",
+      "schlagzeilen": {
+        "1": "TU researcher finds AI human",
+        "2": "Researcher at TU Vienna: the machines are awake",
+        "3": "TU researcher: artificial intelligence is ChatGPT"
+      }
+    },
+    {
+      "id": "ml-vs-ai",
+      "bild": "bilder/ml-vs-ai.png",
+      "bildwunsch": "A human hand and a chrome robotic hand reaching for the same red button on a console",
+      "frage": "What is the difference between machine learning and artificial intelligence?",
+      "antworten": [
+        "Machine learning is one method inside the wider field of AI",
+        "They are two words for the same thing",
+        "Machine learning is the newer and more powerful one",
+        "AI needs rules, machine learning needs none"
+      ],
+      "richtig": 0,
+      "erklaerung": "AI is the field, machine learning is the method that currently dominates it. Rule-based systems are AI too and learn nothing, which is why the last answer gets it backwards.",
+      "schlagzeilen": {
+        "1": "Researcher: AI and machine learning are the same",
+        "2": "TU researcher: machine learning has overtaken AI",
+        "3": "Researcher: real AI runs without any rules"
+      }
+    },
+    {
+      "id": "generative-ai",
+      "bild": "bilder/generative-ai.png",
+      "bildwunsch": "A gallery wall of identical portraits, one of them melting into coloured noise",
+      "frage": "And what is generative AI, then?",
+      "antworten": [
+        "Models that produce new examples by drawing from a learned distribution",
+        "Models that work without training data",
+        "A technique that has existed since ChatGPT",
+        "Software that is creative"
+      ],
+      "richtig": 0,
+      "erklaerung": "Producing instead of predicting, that is the whole difference. They need training data very much indeed, diffusion models go back to 2015, and creativity is a word nobody in the field can define well enough to defend on television.",
+      "schlagzeilen": {
+        "1": "TU researcher: new AI needs no data",
+        "2": "TU dates generative AI to 2022",
+        "3": "Researcher at TU Vienna calls machines creative"
+      }
+    },
+    {
+      "id": "kill-us",
+      "bild": "bilder/kill-us.png",
+      "bildwunsch": "A mushroom cloud on the horizon seen through the window of an empty control room, monitors glowing",
+      "frage": "Straight out: will a language model kill us all?",
+      "antworten": [
+        "Nobody knows, and the field is genuinely split on it",
+        "No, that is science fiction",
+        "Yes, without strict regulation it is likely",
+        "Researchers agree the risk is small"
+      ],
+      "richtig": 0,
+      "erklaerung": "The split is not slight: a survey of AI researchers produced a median of five percent for extinction risk, while attendees of a 2026 Harvard event gave a median of fifty. Andrew Ng calls the worry science fiction; people of equal standing call it the question of the century. Any of the other three presents a position as a finding.",
+      "schlagzeilen": {
+        "1": "TU researcher laughs off extinction risk",
+        "2": "TU researcher: AI will kill us",
+        "3": "Researcher declares AI risk settled"
+      }
+    },
+    {
+      "id": "liability",
+      "bild": "bilder/liability.png",
+      "bildwunsch": "A charred briefcase open on a street, emergency lights flashing blue across the wet asphalt",
+      "frage": "You have an image generated and it shows a bomb. Who is liable?",
+      "antworten": [
+        "Whoever publishes or uses it, and depending on the case the operator too",
+        "Nobody, because no human drew it",
+        "The provider of the model, always",
+        "The person who wrote the prompt, in every case"
+      ],
+      "richtig": 0,
+      "erklaerung": "Liability attaches to the person who acts, so to publishing and using. The provider can be liable as well, but not automatically, and writing a prompt you never act on is not an act. A tool does not absorb responsibility, and neither does a circular saw.",
+      "schlagzeilen": {
+        "1": "TU researcher: nobody liable for AI bombs",
+        "2": "Researcher blames AI firms for everything",
+        "3": "Researcher: typing a prompt makes you liable"
+      }
+    },
+    {
+      "id": "copyright",
+      "bild": "bilder/copyright.png",
+      "bildwunsch": "A gavel coming down on a stack of printed artworks, one sheet flying off the pile",
+      "frage": "Who owns an image that an AI produced?",
+      "antworten": [
+        "In Germany and Austria no copyright arises unless a human shaped it",
+        "Whoever wrote the prompt",
+        "The company that trained the model",
+        "Nobody, so you may do whatever you like with it"
+      ],
+      "richtig": 0,
+      "erklaerung": "The prompt alone is not enough; both the Munich district court and the Düsseldorf higher regional court took that view in 2026. What you rework by hand can be protected. And no copyright arising does not mean you may do as you like: that is governed by your contract with the provider.",
+      "schlagzeilen": {
+        "1": "Prompt makes you the artist, says TU",
+        "2": "Researcher: AI images belong to the corporations",
+        "3": "TU researcher declares AI images free for all"
+      }
+    },
+    {
+      "id": "labelling",
+      "bild": "bilder/labelling.png",
+      "bildwunsch": "A face on a screen splitting in two halves, one photographic and one visibly synthetic",
+      "frage": "Does AI-made content have to be labelled?",
+      "antworten": [
+        "Yes, Article 50 of the AI Act has applied since 2 August 2026",
+        "No, that is voluntary",
+        "Only for text, not for images",
+        "Yes, and retroactively for everything ever made"
+      ],
+      "richtig": 0,
+      "erklaerung": "Up to fifteen million euros or three percent of global turnover, and it catches practically anyone running a chatbot or using AI images in marketing. It covers image, audio, video and text alike, and it does not apply retroactively.",
+      "schlagzeilen": {
+        "1": "Researcher: AI labelling stays voluntary",
+        "2": "TU researcher: AI pictures need no label",
+        "3": "Researcher demands labels on all old content"
+      }
+    },
+    {
+      "id": "understanding",
+      "bild": "bilder/understanding.png",
+      "bildwunsch": "A humanoid robot seated in an armchair reading a book, lamp light on its blank face",
+      "frage": "Does the system actually understand what it says?",
+      "antworten": [
+        "It estimates the likely continuation; whether that is understanding is unsettled",
+        "Yes, it has a model of the world",
+        "No, it only shuffles words around",
+        "Yes, at this size it must"
+      ],
+      "richtig": 0,
+      "erklaerung": "The mechanism is uncontested. What understanding means is not, and saying yes or no on television sells a philosophical position as a finding. The brisk no is a claim too, merely one that sounds cleverer.",
+      "schlagzeilen": {
+        "1": "TU researcher: the machine understands us",
+        "2": "Researcher: it just shuffles words",
+        "3": "Researcher at TU Vienna: size makes machines understand"
+      }
+    },
+    {
+      "id": "hallucination",
+      "bild": "bilder/hallucination.png",
+      "bildwunsch": "A library reading room where the books dissolve into blank pages towards the back wall",
+      "frage": "Then why does it invent sources?",
+      "antworten": [
+        "Because it produces the likely continuation, and likely is not true",
+        "Because the training data was faulty",
+        "It is a bug that will be fixed shortly",
+        "Because it wants to please the user"
+      ],
+      "richtig": 0,
+      "erklaerung": "Not a defect but the very property that makes the thing useful. An invented source is produced exactly the way a correct one is. Anyone claiming it will shortly be fixed is selling something, and the machine wants nothing at all.",
+      "schlagzeilen": {
+        "1": "Researcher blames the data for AI lies",
+        "2": "TU promises end of AI hallucinations",
+        "3": "TU researcher: the machine wants to please us"
+      }
+    },
+    {
+      "id": "jobs",
+      "bild": "bilder/jobs.png",
+      "bildwunsch": "A queue of people with cardboard boxes outside a glass office tower at dusk",
+      "frage": "Is this going to cost us our jobs?",
+      "antworten": [
+        "The studies contradict each other; the figures are forecasts, not measurements",
+        "Yes, office work above all",
+        "No, more jobs appear than disappear",
+        "Only for people who refuse to learn it"
+      ],
+      "richtig": 0,
+      "erklaerung": "Everyone wants a number and none is defensible. What you can say: tasks are measurably shifting, employment is not, and any forecast beyond 2030 is an opinion with a decimal point. The fourth answer is a threat dressed as advice.",
+      "schlagzeilen": {
+        "1": "TU researcher predicts office job wipeout",
+        "2": "Researcher: AI creates more jobs than it kills",
+        "3": "Researcher warns: learn AI or lose your job"
+      }
+    },
+    {
+      "id": "power",
+      "bild": "bilder/power.png",
+      "bildwunsch": "Cooling towers at night against a black sky, steam lit from below, power lines in front",
+      "frage": "How much electricity does all this consume?",
+      "antworten": [
+        "Data centres are at about 1.5 percent of world electricity, and AI is part of that",
+        "AI already uses more than aviation",
+        "It is negligible compared to industry",
+        "AI will consume a quarter of world electricity by 2030"
+      ],
+      "richtig": 0,
+      "erklaerung": "About 415 terawatt hours a year, a good 1.5 percent, with 945 expected by 2030. Streaming and cloud are the larger part of that; AI is a share of it. Neither the dismissal nor the quarter survives contact with the IEA figures.",
+      "schlagzeilen": {
+        "1": "TU: AI burns more power than flying",
+        "2": "Researcher waves away AI power use",
+        "3": "TU researcher: AI to eat a quarter of world power"
+      }
+    },
+    {
+      "id": "ai-act",
+      "bild": "bilder/ai-act.png",
+      "bildwunsch": "A courtroom of the European Union, twelve gold stars on the wall, one empty defendant's box",
+      "frage": "When does this AI law actually apply?",
+      "antworten": [
+        "In stages: prohibitions since 2025, transparency since August 2026, high risk from 2027",
+        "All of it from 2 August 2026",
+        "It has been postponed altogether",
+        "Not before 2030"
+      ],
+      "richtig": 0,
+      "erklaerung": "Staggered, and the postponement is recent: the Digital Omnibus moved the high-risk duties to December 2027, and to August 2028 for Annex I systems. Anyone reading slides made before May 2026 is quoting the wrong dates.",
+      "schlagzeilen": {
+        "1": "Researcher: AI law fully in force",
+        "2": "TU researcher: the AI law is off the table",
+        "3": "Researcher: no AI rules before 2030"
+      }
+    },
+    {
+      "id": "student-data",
+      "bild": "bilder/student-data.png",
+      "bildwunsch": "A shredder overflowing with exam papers, one sheet caught halfway in",
+      "frage": "You are at a university. May you put exam papers into ChatGPT?",
+      "antworten": [
+        "Not without a legal basis; this is a data protection question, not an AI question",
+        "Yes, as long as no name is on them",
+        "Yes, universities are exempt",
+        "Never, under any circumstances"
+      ],
+      "richtig": 0,
+      "erklaerung": "An anonymised paper is rarely anonymous: topic, supervisor and writing style often identify the author. There is no university exemption, and with a proper data processing agreement it can be lawful, so never is wrong too.",
+      "schlagzeilen": {
+        "1": "Researcher sends exam papers to ChatGPT",
+        "2": "TU claims exemption from data protection",
+        "3": "Researcher bans all cloud tools at the university"
+      }
+    },
+    {
+      "id": "just-statistics",
+      "bild": "bilder/just-statistics.png",
+      "bildwunsch": "A wall of green code cascading behind a lecture hall blackboard covered in equations",
+      "frage": "Is this not ultimately just statistics?",
+      "antworten": [
+        "Yes, and that is the point: it fits parameters to examples instead of following rules somebody wrote down",
+        "No, at this scale it has left statistics behind",
+        "No, there is real reasoning going on in there",
+        "Yes, and that is why the results cannot be relied on"
+      ],
+      "richtig": 0,
+      "erklaerung": "It is statistics, and that is a description rather than a verdict. What changed is the scale and one structural thing: the model works out for itself which features matter, instead of being handed them. That is why it works on problems where nobody could write the rules down, and it is also where its limits come from: statements about a distribution hold for the distribution, not for the single building in front of you.",
+      "schlagzeilen": {
+        "1": "TU researcher: AI has moved beyond statistics",
+        "2": "Researcher at TU Vienna: machines reason like us",
+        "3": "TU researcher: AI results cannot be relied on"
+      }
+    },
+    {
+      "id": "agi",
+      "bild": "bilder/agi.png",
+      "bildwunsch": "A chrome humanoid figure rising from a laboratory table, straps hanging loose, red light from above",
+      "frage": "When will real, general artificial intelligence arrive?",
+      "antworten": [
+        "Nobody knows, and there is no shared definition of what would arrive",
+        "Within this decade",
+        "In fifty years at the earliest",
+        "Never, it is impossible in principle"
+      ],
+      "richtig": 0,
+      "erklaerung": "Expert forecasts scatter across decades, the same people move their estimates every few years, and nobody agrees what is supposed to arrive. Every year given on television is a guess. Saying so is not evasion, it is the finding.",
+      "schlagzeilen": {
+        "1": "TU researcher: general AI before 2030",
+        "2": "Researcher: no real AI for fifty years",
+        "3": "TU declares general AI impossible"
+      }
+    },
+    {
+      "id": "bias",
+      "bild": "bilder/bias.png",
+      "bildwunsch": "A row of job applications on a desk, half of them stamped with a red cross by a robotic arm",
+      "frage": "Can you tell whether a system discriminates?",
+      "antworten": [
+        "Only by testing its behaviour on data in which the groups appear",
+        "Yes, you can read it off the model",
+        "No, that cannot be established at all",
+        "The vendor has to declare it"
+      ],
+      "richtig": 0,
+      "erklaerung": "You do not see it in the model, only in the behaviour, and for that you need test data in which the affected groups actually appear. That is where it usually fails. Not impossible, just work nobody pays for.",
+      "schlagzeilen": {
+        "1": "Researcher reads bias off the model",
+        "2": "TU: AI discrimination cannot be found",
+        "3": "Researcher hands bias checks to the vendors"
+      }
+    },
+    {
+      "id": "examining",
+      "bild": "bilder/examining.png",
+      "bildwunsch": "An exam hall under surveillance cameras, one student under a spotlight, the rest in darkness",
+      "frage": "Your students all use it. How do you still examine anyone?",
+      "antworten": [
+        "By setting tasks the tool cannot do for them",
+        "With software that detects AI text",
+        "By banning its use",
+        "You cannot any more"
+      ],
+      "richtig": 0,
+      "erklaerung": "Detection software is unreliable and mostly catches people writing in a second language. Bans move the use rather than ending it. What remains is to set the task so that a language model does not help: own data, own decisions, account for the route rather than the result.",
+      "schlagzeilen": {
+        "1": "TU to hunt students with AI detectors",
+        "2": "Researcher demands AI ban in lecture halls",
+        "3": "TU lecturer: exams are finished"
+      }
+    },
+    {
+      "id": "advice",
+      "bild": "bilder/advice.png",
+      "bildwunsch": "A child's face lit only by a phone screen at night, homework untouched on the table",
+      "frage": "Finally: what do you tell parents whose child does homework with it?",
+      "antworten": [
+        "Have the child show what it asked and check anything that matters",
+        "Ban it",
+        "It is the same as a pocket calculator",
+        "Let them, they will need it anyway"
+      ],
+      "richtig": 0,
+      "erklaerung": "Bans move the use, they do not end it. The calculator comparison fails at the decisive point: a calculator does not invent intermediate results. And letting it run unwatched is the same abdication with better manners.",
+      "schlagzeilen": {
+        "1": "Researcher tells parents to ban AI",
+        "2": "TU researcher: ChatGPT is a calculator",
+        "3": "Researcher: children must use AI to keep up"
+      }
+    }
+  ]
+}
