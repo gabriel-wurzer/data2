@@ -1,6 +1,6 @@
 // Die Hülle vorab, die Bilder erst wenn sie drankommen. Zwei Megabyte je Frage will
 // niemand vorab laden, und gebraucht wird immer nur das Bild der aktuellen Frage.
-const CACHE = "zib-v3";
+const CACHE = "zib-v4";
 const DATEIEN = ["./", "./index.html", "./fragen.json", "./manifest.json",
                  "./icon.svg", "./icon-192.png", "./icon-512.png"];
 

@@ -82,7 +82,9 @@
 <main id="app"></main>
 
 <script>
-const S = { fragen: [], i: 0, gezeigt: false, richtig: 0, schlagzeilen: [], reihenfolge: [] };
+// Je Interview nur ein paar Fragen aus dem ganzen Vorrat, gemischt; zu viele ermüden.
+const RUNDE = 6;
+const S = { vorrat: [], fragen: [], i: 0, gezeigt: false, richtig: 0, schlagzeilen: [], reihenfolge: [] };
 const app = document.getElementById("app");
 
 // Ohne das stünde die richtige Antwort immer an derselben Stelle, und nach drei Fragen
@@ -98,7 +100,7 @@ function mische(feld) {
 
 async function start() {
   const daten = await fetch("fragen.json").then(r => r.json());
-  S.fragen = daten.fragen;
+  S.vorrat = daten.fragen;
   anruf();
 }
 
@@ -109,13 +111,14 @@ function anruf() {
     <p class="anruf">The phone rings. <em>ORF, newsroom of Zeit im Bild.</em> Would you be
     willing to give a short interview tonight? You do work on artificial intelligence at the
     TU, after all.</p>
-    <p class="matt">${S.fragen.length} questions, one answer each. There is no going back:
+    <p class="matt">${Math.min(RUNDE, S.vorrat.length)} questions, one answer each, a different set each time. There is no going back:
     once you have said it, it is said, and the newsroom keeps it.</p>
     <button class="haupt" id="b-los">Yes, gladly</button>`;
   document.getElementById("b-los").onclick = los;
 }
 
 function los() {
+  S.fragen = mische(S.vorrat).slice(0, RUNDE);
   S.i = 0; S.richtig = 0; S.schlagzeilen = [];
   frage();
 }
