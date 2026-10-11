@@ -13,7 +13,9 @@ September 2026 aus einer anderen Sitzung heraus; diese Datei ersetzt deren Gedä
   füllt nur die Lücke im Abschnitt "Your part".
 - `sessions/` — Stundenplanung, Zeitraster, Bewertung. **Nur für Gabriel, nie austeilen.**
 - `data/` — Daten, die Skripte, die sie erzeugen, und die vortrainierten Modelle.
-- `webapps/` — eigenständige Apps, derzeit die Lernkarten.
+- `webapps/` — eigenständige Apps: die Lernkarten (`flashcards/`, nur Begriffe fertiger Einheiten)
+  und *Zeit im Bild* (`zib/`), ein gespieltes TV-Interview über KI. Die ZIB steht in Einheit 1
+  unter "Additional material" und kommt in der letzten Einheit als Rückblick wieder.
 
 ## Konventionen
 
