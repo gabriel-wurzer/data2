@@ -9,8 +9,8 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <style>
   :root {
-    --bg: #0b0d12; --karte: #141821; --rand: #222a38; --text: #e8ecf4;
-    --matt: #8b95a8; --gut: #3fa46a; --schlecht: #c0453c; --akzent: #d8a24a;
+    --bg: #0b0d12; --card: #141821; --edge: #222a38; --text: #e8ecf4;
+    --muted: #8b95a8; --good: #3fa46a; --bad: #c0453c; --accent: #d8a24a;
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   body {
@@ -20,175 +20,203 @@
   }
   main { max-width: 620px; margin: 0 auto; padding-bottom: 32px; }
   h1 { font-size: 22px; letter-spacing: .02em; margin: 20px 0 4px; }
-  p.matt { color: var(--matt); margin: 4px 0 20px; }
+  h2 { font-size: 15px; color: var(--muted); font-weight: 600; margin: 22px 0 8px; }
+  p.muted { color: var(--muted); margin: 4px 0 20px; }
   button {
-    font: inherit; color: inherit; background: var(--karte); border: 1px solid var(--rand);
+    font: inherit; color: inherit; background: var(--card); border: 1px solid var(--edge);
     border-radius: 12px; padding: 14px 16px; width: 100%; text-align: left; margin-bottom: 10px;
     cursor: pointer;
   }
   button:active { transform: scale(.995); }
-  button.gewaehlt { border-color: var(--akzent); background: #1b2030; }
-  button.richtig { border-color: var(--gut); background: #14261d; }
-  button.falsch { border-color: var(--schlecht); background: #2a1715; }
-  .haupt { background: var(--akzent); color: #1a1205; border: none; text-align: center; font-weight: 600; }
-  .bild {
+  button.chosen { border-color: var(--accent); background: #1b2030; }
+  button.right { border-color: var(--good); background: #14261d; }
+  button.wrong { border-color: var(--bad); background: #2a1715; }
+  .main-button { background: var(--accent); color: #1a1205; border: none; text-align: center; font-weight: 600; }
+  .picture {
     width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px;
-    background: #10141d; border: 1px solid var(--rand); display: block;
+    background: #10141d; border: 1px solid var(--edge); display: block;
   }
-  .platzhalter { display: grid; place-items: center; color: var(--matt); font-size: 14px; text-align: center; padding: 16px; }
-  .frage { font-size: 19px; font-weight: 600; margin: 16px 0 14px; }
-  .leiste { display: flex; gap: 10px; align-items: center; color: var(--matt); font-size: 14px; margin-bottom: 8px; }
-  .fortschritt { flex: 1; height: 6px; background: var(--rand); border-radius: 3px; overflow: hidden; }
-  .fortschritt > i { display: block; height: 100%; background: var(--akzent); width: 0; }
-  .erklaerung { border-left: 3px solid var(--akzent); padding: 10px 14px; background: #131722; border-radius: 0 10px 10px 0; margin: 14px 0; }
-  .grube { width: 100%; height: auto; margin: 8px 0 16px; border-radius: 14px; border: 1px solid var(--rand); }
-  .zeile { display: flex; gap: 10px; }
-  .zeile > button { margin-bottom: 0; }
-  .klein { font-size: 14px; color: var(--matt); }
+  .placeholder { display: grid; place-items: center; color: var(--muted); font-size: 14px; text-align: center; padding: 16px; }
+  .question { font-size: 19px; font-weight: 600; margin: 16px 0 6px; }
+  .hint { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+  .bar { display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+  .progress { flex: 1; height: 6px; background: var(--edge); border-radius: 3px; overflow: hidden; }
+  .progress > i { display: block; height: 100%; background: var(--accent); width: 0; }
+  .explanation { border-left: 3px solid var(--accent); padding: 10px 14px; background: #131722; border-radius: 0 10px 10px 0; margin: 14px 0; }
+  .pit { width: 100%; height: auto; margin: 8px 0 16px; border-radius: 14px; border: 1px solid var(--edge); }
+  .small { font-size: 14px; color: var(--muted); }
+  .row { display: flex; gap: 10px; margin-bottom: 10px; }
+  .row > button { margin-bottom: 0; }
+  .row > input {
+    width: 90px; font: inherit; color: inherit; background: var(--card); border: 1px solid var(--edge);
+    border-radius: 12px; padding: 12px; text-align: center;
+  }
 </style>
 </head>
 <body>
 <main id="app"></main>
 
 <script>
-const S = { karten: [], reihe: [], i: 0, gewaehlt: new Set(), gezeigt: false, modus: "alle",
-            richtig: 0, falsch: 0, reihenfolge: [] };
+// state of the app: all cards, the current round, and what the player has chosen
+const state = { cards: [], round: [], index: 0, chosen: new Set(), shown: false,
+                right: 0, wrong: 0, order: [] };
 const app = document.getElementById("app");
 
-// Without this the correct answers would always sit in the same slots, and after three
-// cards everybody just taps the first and the third.
-function mische(feld) {
-  const a = [...feld];
+// Shuffle the answers, otherwise the right ones always sit in the same places.
+function shuffle(list) {
+  const a = [...list];
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
 }
-const speicher = {
-  lies() { try { return JSON.parse(localStorage.getItem("kartei") || "{}"); } catch { return {}; } },
-  schreib(k) { try { localStorage.setItem("kartei", JSON.stringify(k)); } catch {} },
+
+// progress per card, kept in the browser: how many times in a row it was answered right
+const store = {
+  read() { try { return JSON.parse(localStorage.getItem("progress") || "{}"); } catch { return {}; } },
+  write(p) { try { localStorage.setItem("progress", JSON.stringify(p)); } catch {} },
 };
+const sitting = (progress, card) => (progress[card.id] || 0) >= 2;
 
 async function start() {
-  const daten = await fetch("fragen.json").then(r => r.json());
-  S.karten = daten.karten;
-  menue();
+  const data = await fetch("cards.json").then(r => r.json());
+  state.cards = data.cards;
+  menu();
 }
 
-function menue() {
-  const kartei = speicher.lies();
-  const offen = S.karten.filter(k => (kartei[k.id] || 0) < 2).length;
+function menu() {
+  const progress = store.read();
+  const open = state.cards.filter(c => !sitting(progress, c)).length;
+  const sessions = [...new Set(state.cards.map(c => c.session))].sort((a, b) => a - b);
   app.innerHTML = `
-    ${grubeSvg()}
+    ${pitSvg()}
     <h1>AI terms, asked</h1>
-    <p class="matt">Not quite Kolinahr, but it keeps asking until the terms stick. Every card has a
-    picture, a question and more than one correct answer.</p>
-    <button class="haupt" id="b-alle">All cards, ${S.karten.length}</button>
-    <button id="b-kartei">Only what is not sitting yet, ${offen}</button>
-    <button id="b-reset" class="klein">Reset progress</button>`;
-  document.getElementById("b-alle").onclick = () => los("alle");
-  document.getElementById("b-kartei").onclick = () => los("kartei");
-  document.getElementById("b-reset").onclick = () => { speicher.schreib({}); menue(); };
-}
-
-function los(modus) {
-  const kartei = speicher.lies();
-  S.modus = modus;
-  S.reihe = (modus === "kartei" ? S.karten.filter(k => (kartei[k.id] || 0) < 2) : [...S.karten])
-              .sort(() => Math.random() - .5);
-  if (!S.reihe.length) return menue();
-  S.i = 0; S.richtig = 0; S.falsch = 0;
-  karte();
-}
-
-function karte() {
-  const k = S.reihe[S.i];
-  S.gewaehlt = new Set();
-  S.gezeigt = false;
-  const anteil = Math.round((S.i / S.reihe.length) * 100);
-  app.innerHTML = `
-    <div class="leiste"><span>${S.i + 1} / ${S.reihe.length}</span>
-      <span class="fortschritt"><i style="width:${anteil}%"></i></span>
-      <span>${S.richtig} right</span></div>
-    <img class="bild" src="${k.bild}" alt="" onerror="this.replaceWith(platzhalter())">
-    <div class="frage">${k.frage}</div>
-    <div id="antworten"></div>
-    <button class="haupt" id="b-pruef">Check answer</button>
-    <div id="nach"></div>`;
-  const kasten = document.getElementById("antworten");
-  S.reihenfolge = mische([...k.antworten.keys()]);
-  S.reihenfolge.forEach(urspruenglich => {
-    const b = document.createElement("button");
-    b.textContent = k.antworten[urspruenglich];
-    b.onclick = () => {
-      if (S.gezeigt) return;
-      S.gewaehlt.has(urspruenglich) ? S.gewaehlt.delete(urspruenglich)
-                                    : S.gewaehlt.add(urspruenglich);
-      b.classList.toggle("gewaehlt");
-    };
-    kasten.appendChild(b);
+    <p class="muted">Not quite Kolinahr, but it keeps asking until the terms stick. Every card has a
+    picture, a question and more than one correct answer. New sessions appear here as the course
+    goes on.</p>
+    <button class="main-button" id="b-open">Everything not sitting yet, ${open}</button>
+    <h2>A random mix from all sessions</h2>
+    <div class="row">
+      <input id="n-random" type="number" min="1" max="${state.cards.length}"
+             value="${Math.min(10, state.cards.length)}" aria-label="how many questions">
+      <button id="b-random">random questions</button>
+    </div>
+    <h2>By session</h2>
+    ${sessions.map(s => {
+      const n = state.cards.filter(c => c.session === s).length;
+      return `<button data-session="${s}">Session ${s}, ${n} cards</button>`;
+    }).join("")}
+    <button id="b-all">All cards, ${state.cards.length}</button>
+    <button id="b-reset" class="small">Reset progress</button>`;
+  document.getElementById("b-open").onclick = () => play(c => !sitting(store.read(), c));
+  document.getElementById("b-all").onclick = () => play(() => true);
+  document.getElementById("b-random").onclick = () => {      // N cards drawn from all sessions
+    const n = Math.max(1, Math.min(state.cards.length,
+                                   parseInt(document.getElementById("n-random").value, 10) || 10));
+    play(() => true, n);
+  };
+  document.querySelectorAll("[data-session]").forEach(b => {
+    b.onclick = () => play(c => c.session === Number(b.dataset.session));
   });
-  document.getElementById("b-pruef").onclick = pruefen;
+  document.getElementById("b-reset").onclick = () => { store.write({}); menu(); };
 }
 
-function platzhalter() {
+// a round: the chosen cards in random order, cut to `count` if given
+function play(choose, count) {
+  state.round = shuffle(state.cards.filter(choose)).slice(0, count || undefined);
+  if (!state.round.length) return menu();
+  state.index = 0; state.right = 0; state.wrong = 0;
+  showCard();
+}
+
+function showCard() {
+  const card = state.round[state.index];
+  state.chosen = new Set();
+  state.shown = false;
+  const done = Math.round((state.index / state.round.length) * 100);
+  app.innerHTML = `
+    <div class="bar"><span>${state.index + 1} / ${state.round.length}</span>
+      <span class="progress"><i style="width:${done}%"></i></span>
+      <span>${state.right} right</span></div>
+    <img class="picture" src="${card.image}" alt="" onerror="this.replaceWith(placeholder())">
+    <div class="question">${card.question}</div>
+    <div class="hint">Tap every answer you think is right, then check.</div>
+    <div id="answers"></div>
+    <button class="main-button" id="b-check">Check answer</button>
+    <div id="after"></div>`;
+  const box = document.getElementById("answers");
+  state.order = shuffle([...card.answers.keys()]);
+  state.order.forEach(original => {
+    const b = document.createElement("button");
+    b.textContent = card.answers[original];
+    b.onclick = () => {
+      if (state.shown) return;
+      state.chosen.has(original) ? state.chosen.delete(original) : state.chosen.add(original);
+      b.classList.toggle("chosen");
+    };
+    box.appendChild(b);
+  });
+  document.getElementById("b-check").onclick = check;
+}
+
+function placeholder() {
   const d = document.createElement("div");
-  d.className = "bild platzhalter";
+  d.className = "picture placeholder";
   d.textContent = "image still rendering";
   return d;
 }
 
-function pruefen() {
-  if (S.gezeigt) return;
-  S.gezeigt = true;
-  const k = S.reihe[S.i];
-  const soll = new Set(k.richtig);
-  const knoepfe = [...document.querySelectorAll("#antworten button")];
-  knoepfe.forEach((b, pos) => {
-    const n = S.reihenfolge[pos];
-    b.classList.remove("gewaehlt");
-    if (soll.has(n)) b.classList.add("richtig");
-    else if (S.gewaehlt.has(n)) b.classList.add("falsch");
+function check() {
+  if (state.shown) return;
+  state.shown = true;
+  const card = state.round[state.index];
+  const correct = new Set(card.correct);
+  const buttons = [...document.querySelectorAll("#answers button")];
+  buttons.forEach((b, pos) => {
+    const n = state.order[pos];
+    b.classList.remove("chosen");
+    if (correct.has(n)) b.classList.add("right");
+    else if (state.chosen.has(n)) b.classList.add("wrong");
   });
-  const stimmt = soll.size === S.gewaehlt.size && [...soll].every(n => S.gewaehlt.has(n));
-  stimmt ? S.richtig++ : S.falsch++;
+  const ok = correct.size === state.chosen.size && [...correct].every(n => state.chosen.has(n));
+  ok ? state.right++ : state.wrong++;
 
-  const kartei = speicher.lies();
-  kartei[k.id] = stimmt ? Math.min((kartei[k.id] || 0) + 1, 3) : 0;
-  speicher.schreib(kartei);
+  const progress = store.read();
+  progress[card.id] = ok ? Math.min((progress[card.id] || 0) + 1, 3) : 0;
+  store.write(progress);
 
-  document.getElementById("nach").innerHTML = `
-    <div class="erklaerung"><b>${stimmt ? "That sits." : "Not yet."}</b> ${k.erklaerung}</div>
-    <button class="haupt" id="b-weiter">${S.i + 1 < S.reihe.length ? "Next" : "Result"}</button>`;
-  document.getElementById("b-weiter").onclick = () => {
-    S.i++;
-    S.i < S.reihe.length ? karte() : ende();
+  document.getElementById("after").innerHTML = `
+    <div class="explanation"><b>${ok ? "That sits." : "Not yet."}</b> ${card.explanation}</div>
+    <button class="main-button" id="b-next">${state.index + 1 < state.round.length ? "Next" : "Result"}</button>`;
+  document.getElementById("b-next").onclick = () => {
+    state.index++;
+    state.index < state.round.length ? showCard() : finish();
   };
-  document.getElementById("b-pruef").remove();
+  document.getElementById("b-check").remove();
 }
 
-function ende() {
-  const kartei = speicher.lies();
-  const sitzen = S.karten.filter(k => (kartei[k.id] || 0) >= 2).length;
+function finish() {
+  const progress = store.read();
+  const n = state.cards.filter(c => sitting(progress, c)).length;
   app.innerHTML = `
-    <h1>${S.richtig} of ${S.reihe.length}</h1>
-    <p class="matt">${sitzen} of ${S.karten.length} terms are sitting. A card counts as sitting after
+    <h1>${state.right} of ${state.round.length}</h1>
+    <p class="muted">${n} of ${state.cards.length} terms are sitting. A card counts as sitting after
     two correct answers in a row, and falls back to zero on a mistake.</p>
-    <button class="haupt" id="b-nochmal">The wrong ones again</button>
-    <button id="b-menue">Back</button>`;
-  document.getElementById("b-nochmal").onclick = () => los("kartei");
-  document.getElementById("b-menue").onclick = menue;
+    <button class="main-button" id="b-again">What is not sitting yet</button>
+    <button id="b-menu">Back</button>`;
+  document.getElementById("b-again").onclick = () => play(c => !sitting(store.read(), c));
+  document.getElementById("b-menu").onclick = menu;
 }
 
-function grubeSvg() {
-  return `<svg class="grube" viewBox="0 0 620 300" role="img" aria-label="the pit">
+function pitSvg() {
+  return `<svg class="pit" viewBox="0 0 620 300" role="img" aria-label="the pit">
     <defs>
-      <radialGradient id="himmel" cx="50%" cy="10%" r="90%">
+      <radialGradient id="sky" cx="50%" cy="10%" r="90%">
         <stop offset="0%" stop-color="#2a1c10"/><stop offset="100%" stop-color="#0b0d12"/>
       </radialGradient>
     </defs>
-    <rect width="620" height="300" fill="url(#himmel)"/>
+    <rect width="620" height="300" fill="url(#sky)"/>
     <ellipse cx="310" cy="250" rx="300" ry="60" fill="#12151d"/>
     <ellipse cx="310" cy="250" rx="200" ry="40" fill="#0e1119"/>
     ${[...Array(9)].map((_, n) => {

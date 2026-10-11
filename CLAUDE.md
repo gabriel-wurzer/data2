@@ -64,5 +64,5 @@ elf Sekunden je Kernel, Einheit 7 zieht 200 Schritte mal zwölf Bilder in unter 
 ## Veröffentlichung
 
 Repo `git@github.com:gabriel-wurzer/data2.git`, die Lernkarten laufen über GitHub Pages
-unter `gabriel-wurzer.github.io/data2/webapps/lernkarten/`. Was nicht committet und
+unter `gabriel-wurzer.github.io/data2/webapps/flashcards/`. Was nicht committet und
 gepusht ist, sehen die Studierenden nicht. Vor jeder Einheit den Stand prüfen.
