@@ -47,6 +47,7 @@
   .small { font-size: 14px; color: var(--muted); }
   .row { display: flex; gap: 10px; margin-bottom: 10px; }
   .row > button { margin-bottom: 0; }
+  .row > button.reset { width: auto; flex: none; color: var(--muted); font-size: 14px; }
   .row > input {
     width: 90px; font: inherit; color: inherit; background: var(--card); border: 1px solid var(--edge);
     border-radius: 12px; padding: 12px; text-align: center;
@@ -108,11 +109,13 @@ function menu() {
     </div>
     <h2>By session</h2>
     ${sessions.map(s => {
-      const n = state.cards.filter(c => c.session === s).length;
-      return `<button data-session="${s}">Session ${s}, ${n} cards</button>`;
+      const here = state.cards.filter(c => c.session === s);
+      const sat = here.filter(c => sitting(progress, c)).length;
+      return `<div class="row"><button data-session="${s}">Session ${s}, ${here.length} cards, ${sat} sitting</button>
+              <button class="reset" data-reset="${s}">Reset</button></div>`;
     }).join("")}
     <button id="b-all">All cards, ${state.cards.length}</button>
-    <button id="b-reset" class="small">Reset progress</button>`;
+    <button id="b-reset" class="small">Reset everything, so all cards have to be learned again</button>`;
   document.getElementById("b-open").onclick = () => play(c => !sitting(store.read(), c));
   document.getElementById("b-all").onclick = () => play(() => true);
   document.getElementById("b-random").onclick = () => {      // N cards drawn from all sessions
@@ -123,7 +126,19 @@ function menu() {
   document.querySelectorAll("[data-session]").forEach(b => {
     b.onclick = () => play(c => c.session === Number(b.dataset.session));
   });
-  document.getElementById("b-reset").onclick = () => { store.write({}); menu(); };
+  document.getElementById("b-reset").onclick = () => {           // forget all progress
+    if (confirm("Forget your progress on all cards?")) { store.write({}); menu(); }
+  };
+  document.querySelectorAll("[data-reset]").forEach(b => {        // forget one session's progress
+    b.onclick = () => {
+      const s = Number(b.dataset.reset);
+      if (!confirm(`Forget your progress on session ${s}?`)) return;
+      const p = store.read();
+      state.cards.filter(c => c.session === s).forEach(c => delete p[c.id]);
+      store.write(p);
+      menu();
+    };
+  });
 }
 
 // a round: the chosen cards in random order, cut to `count` if given
