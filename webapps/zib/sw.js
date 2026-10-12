@@ -1,6 +1,6 @@
 // Die Hülle vorab, die Bilder erst wenn sie drankommen. Zwei Megabyte je Frage will
 // niemand vorab laden, und gebraucht wird immer nur das Bild der aktuellen Frage.
-const CACHE = "zib-v4";
+const CACHE = "zib-v5";
 const DATEIEN = ["./", "./index.html", "./fragen.json", "./manifest.json",
                  "./icon.svg", "./icon-192.png", "./icon-512.png"];
 
@@ -10,7 +10,7 @@ self.addEventListener("install", e => {
 
 self.addEventListener("activate", e => {
   e.waitUntil(caches.keys()
-    .then(namen => Promise.all(namen.filter(n => n !== CACHE).map(n => caches.delete(n))))
+    .then(namen => Promise.all(namen.filter(n => n.startsWith("zib-") && n !== CACHE).map(n => caches.delete(n))))
     .then(() => self.clients.claim()));
 });
 

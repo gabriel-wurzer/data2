@@ -1,6 +1,6 @@
 // The shell is cached up front; card pictures only when a card comes up, since nobody wants
 // to download two megabytes per card in advance.
-const CACHE = "flashcards-v3";
+const CACHE = "flashcards-v4";
 const FILES = ["./", "./index.html", "./cards.json", "./manifest.json",
                "./icon.svg", "./icon-192.png", "./icon-512.png"];
 
@@ -14,7 +14,7 @@ self.addEventListener("install", e => {
 
 self.addEventListener("activate", e => {
   e.waitUntil(caches.keys()
-    .then(names => Promise.all(names.filter(n => n !== CACHE).map(n => caches.delete(n))))
+    .then(names => Promise.all(names.filter(n => n.startsWith("flashcards-") && n !== CACHE).map(n => caches.delete(n))))
     .then(() => self.clients.claim()));
 });
 
