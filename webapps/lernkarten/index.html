@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flashcards have moved</title>
+<meta http-equiv="refresh" content="0; url=../flashcards/">
+<link rel="canonical" href="../flashcards/">
+<style>body{font:18px/1.5 sans-serif;margin:3em auto;max-width:30em;padding:0 1em;background:#0b0d12;color:#eee}a{color:#d8a24a}</style>
+</head>
+<body>
+<p>The flashcards have moved to <a href="../flashcards/">gabriel-wurzer.github.io/data2/webapps/flashcards</a>.
+If you added the old address to your home screen, open the new one and add that instead.</p>
+<script>
+// An old installed copy may still have a service worker here; remove it so the old shell stops loading.
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => {
+    if (r.scope.includes("/webapps/lernkarten/")) r.unregister();
+  }));
+}
+location.replace("../flashcards/");
+</script>
+</body>
+</html>
